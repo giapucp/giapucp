@@ -1,0 +1,16 @@
+/* Estilos para el contenedor principal de la página de Noticias */
+.container-noticias {
+  width: 100%; /* Asegura que ocupe todo el ancho disponible */
+  min-height: 100vh; /* Ocupa al menos el 100% de la altura visible del viewport */
+  color: black; /* Color de texto predeterminado para el contenido de la página */
+  display: flex; /* Permite organizar el contenido con flexbox */
+  flex-direction: column; /* Apila los elementos hijos verticalmente */
+  overflow-x: hidden; /* Evita barras de desplazamiento horizontal no deseadas */
+  padding-top: 80px; /* IMPORTANTE: Deja espacio para el Navbar fijo en la parte superior. Ajusta este valor si tu Navbar tiene otra altura. */
+  box-sizing: border-box; /* Incluye el padding en el cálculo del ancho y alto total */
+}
+
+/* Asegurar que el footer esté siempre al final */
+.container-noticias {
+  justify-content: space-between;
+}

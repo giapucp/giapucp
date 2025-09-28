@@ -1,0 +1,92 @@
+/* Contenedor principal */
+.contact-info-card {
+  padding: 0.5rem;
+  height: 100%;
+}
+
+@media (min-width: 768px) {
+  .contact-info-card {
+    padding: 1.5rem; /* Reducido de 2rem */
+  }
+}
+
+@media (min-width: 1024px) {
+  .contact-info-card {
+    padding: 0rem;
+  }
+}
+
+/* Título */
+.contact-info-card .contact-info-title {
+  font-size: 2rem; /* Reducido de 1.5rem */
+  font-weight: 700;
+  color: black;
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .contact-info-card .contact-info-title {
+    font-size: 2rem; /* Reducido de 1.875rem */
+  }
+}
+
+/* Descripción */
+.contact-info-card .contact-info-description {
+  font-size: 1rem; /* Reducido de 0.875rem */
+  font-weight: 600;
+  color: black;
+  margin-bottom: 1rem; /* Reducido de 1.5rem */
+}
+
+@media (min-width: 768px) {
+  .contact-info-card .contact-info-description {
+    font-size: 1rem; /* Reducido de 1rem */
+    margin-bottom: 1.5rem; /* Reducido de 2rem */
+  }
+}
+
+/* Lista de enlaces */
+.contact-links-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* Reducido de 2rem */
+}
+
+/* Cada enlace */
+.contact-link-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem; /* Reducido de 2rem */
+  color: #4a5568;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+/* Hover para el texto */
+.contact-link-item:hover {
+  color: #2b6cb0;
+}
+
+/* Imagen como ícono */
+.contact-link-image {
+  width: 28px; /* Reducido de 32px */
+  height: 28px; /* Reducido de 32px */
+  object-fit: contain;
+  flex-shrink: 0;
+  margin-top: 2px; /* Ajuste para alinear perfectamente con el texto */
+}
+
+/* Texto del enlace */
+.contact-links-list .contact-link-text {
+  color: black;
+  font-weight: bold;
+  font-size: 1.125rem; /* Reducido de 1rem */
+  line-height: 1;
+  display: inline-block;
+}
+
+@media (min-width: 768px) {
+  .contact-link-text {
+    font-size: 1rem; /* Reducido de 1.125rem */
+  }
+}

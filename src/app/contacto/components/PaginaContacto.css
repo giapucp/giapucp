@@ -1,0 +1,11 @@
+.container-contacto {
+  width: 100%;
+  min-height: 100vh;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  padding-top: 80px;
+  box-sizing: border-box;
+  justify-content: space-between;
+}

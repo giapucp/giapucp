@@ -1,0 +1,74 @@
+.contact-section-background {
+  background: linear-gradient(160deg, #000000 30%, #00548c, #7fc0ba, #ffffff);
+  min-height: calc(100vh - 200px); /* Ajustado para que quepa en viewport */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem; /* Reducido el padding */
+}
+
+.contact-section-padding {
+  padding-top: 1rem; /* Reducido significativamente */
+  padding-bottom: 2rem; /* Reducido */
+}
+
+@media (min-width: 768px) {
+  .contact-section-padding {
+    padding-top: 1.5rem; /* Reducido */
+    padding-bottom: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .contact-section-padding {
+    padding-top: 1rem; /* Reducido */
+    padding-bottom: 2rem;
+  }
+}
+
+.contact-card {
+  background-color: white;
+  border-radius: 0.5rem; /* rounded-lg */
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl */
+  max-width: 1000px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.5rem; /* Reducido el padding */
+}
+
+.contact-content-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem; /* Reducido el gap */
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .contact-content-grid {
+    grid-template-columns: 6fr 4fr; /* 70% / 30% */
+    gap: 2rem; /* Reducido el gap */
+  }
+
+  .contact-content-grid::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 60%; /* Línea divisoria al 70% */
+    width: 3px;
+    transform: translateX(-50%);
+  }
+
+  .contact-form-container {
+    padding-right: 1rem; /* Reducido */
+    margin-left: 0.3rem;
+  }
+
+  .contact-info-container {
+    padding-left: 1rem; /* Reducido */
+    margin-right: 1.6rem;
+  }
+}

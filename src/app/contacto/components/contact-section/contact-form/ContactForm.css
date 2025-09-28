@@ -1,0 +1,252 @@
+/* Estilos para el título del formulario */
+.contact-form-title {
+  font-size: 1.25rem; /* Reducido de 1.5rem */
+  font-weight: bold;
+  color: #000000; /* text-gray-800 */
+  margin-bottom: -15px; /* Reducido el margen negativo */
+}
+
+@media (min-width: 768px) {
+  /* md */
+  .contact-form-title {
+    font-size: 1.5rem; /* Reducido de 1.875rem */
+  }
+}
+
+/* Estilos para la descripción del formulario */
+.contact-form-description {
+  font-size: 0.8rem; /* Reducido de 0.875rem */
+  color: #000000; /* text-gray-600 */
+  margin-bottom: 0.5rem; /* Aumentado ligeramente */
+  font-weight: bold;
+}
+
+@media (min-width: 768px) {
+  /* md */
+  .contact-form-description {
+    font-size: 0.9rem; /* Reducido de 1rem */
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Estilos para el contenedor del formulario */
+.contact-form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem; /* Reducido de 1rem */
+}
+
+@media (min-width: 768px) {
+  /* md */
+  .contact-form-container {
+    gap: 1rem; /* Reducido de 1.5rem */
+  }
+}
+
+/* Estilos para la cuadrícula de campos de formulario */
+.form-fields-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* grid-cols-1 */
+  gap: 0.75rem; /* Reducido de 1.5rem */
+}
+
+@media (min-width: 768px) {
+  /* md */
+  .form-fields-grid {
+    grid-template-columns: repeat(2, 1fr); /* md:grid-cols-2 */
+    gap: 1rem; /* Reducido */
+  }
+}
+
+/* Estilos para el contenedor del botón de envío */
+.submit-button-wrapper {
+  display: flex;
+  justify-content: flex-end; /* justify-end */
+  margin-top: 0.5rem; /* Añadido margen superior pequeño */
+}
+
+/* ContactForm.css */
+.success-message {
+  height: 100%;
+  background-color: #d4edda;
+  color: #155724;
+  padding: 2rem;
+  border-radius: 4px;
+  border: 1px solid #c3e6cb;
+  animation: fadeIn 0.5s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  font-size: 1.3rem;
+  gap: 0.5rem;
+}
+
+.error-message {
+  height: 100%;
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 1rem;
+  border-radius: 4px;
+  border: 1px solid #f5c6cb;
+  animation: fadeIn 0.3s ease-out;
+  font-size: 1.3rem;
+}
+
+.error-message ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.error-message li {
+  margin-bottom: 0.25rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.submit-button-wrapper button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  position: relative;
+}
+
+.submit-button-wrapper button:disabled::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.honey-pot {
+  opacity: 0;
+  position: absolute;
+  height: 0;
+  width: 0;
+  pointer-events: none;
+}
+
+.form-field-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-field-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #000000;
+  font-family: var(--font-primary);
+  transition: color 0.2s ease;
+}
+
+.form-field-input,
+.form-field-textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  background-color: #f9fafb;
+  font-size: 1rem;
+  font-family: var(--font-primary);
+  color: #111827;
+  transition:
+    border 0.3s,
+    box-shadow 0.3s,
+    background-color 0.3s;
+  outline: none;
+}
+
+
+.form-field-input {
+  height: 40px;
+}
+
+.form-field-textarea {
+  min-height: 40px;
+  resize: none;
+}
+
+.form-field-input:focus,
+.form-field-textarea:focus {
+  border-color: #3b82f6;
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+}
+
+.form-field-input:hover,
+.form-field-textarea:hover {
+  border-color: #a5b4fc;
+}
+
+.form-field-input::placeholder,
+.form-field-textarea::placeholder {
+  color: #9ca3af;
+  font-family: var(--font-primary);
+}
+
+.submit-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 2rem;
+  background-color: #111827; /* Gray-900 */
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover: cambia color y eleva el botón */
+.submit-button:hover {
+  background-color: #1e3657; /* Gray-800 */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Focus: ring visible */
+.submit-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.4); /* blue ring */
+}
+
+/* Active: animación de clic */
+.submit-button:active {
+  transform: scale(0.97);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Eliminar márgenes heredados del contenedor si fuese necesario */
+.submit-button:where(*) {
+  margin: 0;
+}

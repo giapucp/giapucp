@@ -1,0 +1,73 @@
+.miembro-card {
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  width: 280px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.miembro-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.miembro-imagen-container {
+  width: 100%; /* Ocupa todo el ancho de la tarjeta */
+  height: 300px; /* Altura fija para la imagen, ajustar según sea necesario */
+  margin-bottom: 20px;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.miembro-imagen {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cubre el contenedor, puede recortar partes de la imagen */
+  transition: transform 0.3s ease; /* Animación para la imagen al hacer hover */
+}
+
+.miembro-card:hover .miembro-imagen {
+  transform: scale(1.05);
+}
+
+.miembro-nombre {
+  font-size: 1em;
+  color: #333;
+  margin-bottom: 4px;
+  font-weight: 600;
+  padding: 0 8px;
+}
+
+.miembro-card {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInSlideUpMiembroCard 0.5s ease-out forwards; /* Renombrado para evitar colisiones */
+}
+
+@keyframes fadeInSlideUpMiembroCard {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Para escalonar las animaciones (se mantiene, ajustar si es necesario) */
+/* Estos selectores pueden necesitar ser más específicos si están dentro de PaginaDirectorio.css */
+.miembros-grid .miembro-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.miembros-grid .miembro-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.miembros-grid .miembro-card:nth-child(3) {
+  animation-delay: 0.3s;
+}

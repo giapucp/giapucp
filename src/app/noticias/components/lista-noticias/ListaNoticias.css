@@ -1,0 +1,171 @@
+/* Variables CSS para facilitar la gestión de colores y espaciados */
+:root {
+  --color-gray-800: #2d3748;
+  --color-blue-active: #2563eb;
+  --color-blue-shadow: rgba(37, 99, 235, 0.4);
+  --color-year-inactive: #e2e8f0;
+  --color-year-number-active: #1e3a8a;
+
+  --spacing-base: 1rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 0.75rem;
+  --spacing-lg: 1rem;
+  --spacing-xl: 1.5rem;
+  --spacing-2xl: 2rem;
+  --spacing-3xl: 2.5rem;
+  --spacing-4xl: 4rem;
+  --spacing-6xl: 6rem;
+}
+
+/* ANIMACIÓN DEL TÍTULO "Noticias" */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Estilos para el <h1> dentro de .container-noticias-titulo */
+.container-noticias-titulo h1 {
+  font-family: var(--font-display);
+  font-size: 3.75rem;
+  font-weight: 700;
+  color: var(--color-gray-800);
+  letter-spacing: -0.025em;
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+/* Nuevo wrapper para centrar el contenido y permitir el posicionamiento de la barra */
+.container-noticias-wrapper {
+  position: relative;
+  overflow-x: hidden;
+}
+
+.container-noticias-wrapper-contenido {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .container-noticias-wrapper-contenido {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .container-noticias-wrapper-contenido {
+    padding-bottom: 4rem;
+    margin-top: 0.2rem;
+  }
+}
+
+/* Contenedor del título */
+.container-noticias-titulo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-4xl);
+}
+
+@media (min-width: 768px) {
+  .container-noticias-titulo {
+    margin-bottom: var(--spacing-4xl);
+  }
+}
+
+.year-indicator {
+  position: absolute;
+  right: 0px;
+  top: 0;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0;
+  z-index: 10;
+  padding-left: 20px;
+  padding-right: 40px;
+  pointer-events: none;
+}
+
+.year-marker {
+  position: relative;
+  width: 4px;
+  background-color: var(--color-year-inactive);
+  border-radius: 2px;
+  transition: background-color 0.5s ease;
+  flex-shrink: 0;
+  margin-bottom: 65px;
+}
+
+.year-marker.active {
+  background-color: var(--color-blue-active);
+  box-shadow: 0 0 10px var(--color-blue-shadow);
+}
+
+.year-number-active {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-year-number-active);
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: var(--font-primary);
+  opacity: 1;
+  transition:
+    opacity 0.3s ease,
+    font-size 0.3s ease,
+    left 0.3s ease;
+  white-space: nowrap;
+}
+
+.news-content {
+  margin-right: 120px;
+}
+
+.year-group {
+  margin-bottom: 4rem;
+}
+
+.news-row {
+  margin-bottom: 1.5rem;
+}
+
+.year-group > .news-row:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .year-indicator {
+    right: 0px;
+    padding-right: 20px;
+    padding-left: 10px;
+  }
+
+  .year-marker {
+    height: 60px;
+  }
+
+  .year-number-active {
+    font-size: 0.9rem;
+    left: 10px;
+  }
+
+  .news-content {
+    margin-right: 80px;
+  }
+
+  .year-group {
+    margin-bottom: 3rem;
+  }
+}
