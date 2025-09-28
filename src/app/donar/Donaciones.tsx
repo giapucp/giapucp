@@ -7,10 +7,10 @@ import { copyToClipboard, sharePage as sharePageUtil, shareWhatsApp } from "./ut
 
 export default function DonatePage() {
 
-  const YAPE_PLIN_QR = "/qr_pagos/qr_plin.jpg";
-  const PLIN_NUMBER = "+51 963065928";
-  const SCOTIABANK_ACCOUNT = "1130276973";
-  const SCOTIABANK_CCI = "00901220113027697367";
+  const YAPE_PLIN_QR = "/qr_pagos/qr_yape_plin.jpg";
+  const PLIN_NUMBER = "+51 923559154";
+  const SCOTIABANK_ACCOUNT = "1430406387";
+  const SCOTIABANK_CCI = "00907020143040638747";
   
   const [copied, setCopied] = useState<{ which: string; at: number | null }>({ which: "", at: null });
 
