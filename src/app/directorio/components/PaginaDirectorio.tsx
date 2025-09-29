@@ -14,6 +14,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 const PaginaDirectorio = () => {
 	const [miembros, setMiembros] = useState<Miembro[]>([]);
+	const [searchTerm, setSearchTerm] = useState("");
+	const [selectedArea, setSelectedArea] = useState("Todos");
 	const pageContainerRef = useRef<HTMLDivElement | null>(null);
 
 	useEffect(() => {
@@ -58,8 +60,24 @@ const PaginaDirectorio = () => {
 		};
 	}, [miembros]);
 
-	const presidente = miembros.find((m) => m.area.nombre === "presidente");
-	const areas = miembros
+	const areaOptions = [
+		"Todos",
+		...Array.from(new Set(miembros.map((m) => m.area.nombre))),
+	];
+	const miembrosFiltrados = miembros.filter((m) => {
+		const matchNombre =
+			`${m.nombre} ${m.apellidoPaterno}`
+				.toLowerCase()
+				.includes(searchTerm.toLowerCase());
+		const matchArea =
+			selectedArea === "Todos" || m.area.nombre === selectedArea;
+		return matchNombre && matchArea;
+	});
+
+	const presidente = miembrosFiltrados.find(
+		(m) => m.area.nombre === "presidente"
+	);
+	const areas = miembrosFiltrados
 		.filter((m) => m.area.nombre !== "presidente")
 		.reduce<Record<string, Miembro[]>>((acc, miembro) => {
 			if (!acc[miembro.area.nombre]) {
@@ -74,6 +92,25 @@ const PaginaDirectorio = () => {
 			<Navbar />
 			<div className="pagina-directorio-container" ref={pageContainerRef}>
 				<h2 className="directorio-titulo">Directorio</h2>
+
+				<div className="directorio-filtros">
+					<select
+						value={selectedArea}
+						onChange={(e) => setSelectedArea(e.target.value)}
+					>
+						{areaOptions.map((area) => (
+							<option key={area} value={area}>
+								{area}
+							</option>
+						))}
+					</select>
+					<input
+						type="text"
+						placeholder="Buscar por nombre o apellido"
+						value={searchTerm}
+						onChange={(e) => setSearchTerm(e.target.value)}
+						/>					
+				</div>
 
 				{presidente && (
 					<section className="directorio-seccion presidente-seccion">

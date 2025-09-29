@@ -63,6 +63,46 @@
   min-height: 430px;
 }
 
+.directorio-filtros {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 40px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.directorio-filtros input,
+.directorio-filtros select {
+  padding: 10px 14px;
+  font-size: 1rem;
+  font-family: var(--font-primary, sans-serif);
+  border-right: 10px solid #ffffff;
+  border-radius: 8px;
+  background-color: #ffffff;
+  outline: 1px solid #ccc;
+  transition: all 0.2s ease;
+}
+
+.directorio-filtros input {
+  width: clamp(220px, 80%, 1000px); /* mínimo 220px, preferido 60% del contenedor, máximo 400px */
+}
+
+
+.directorio-filtros input:focus,
+.directorio-filtros select:focus {
+  border-color: #4facfe;
+  box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.25);
+}
+
+.directorio-filtros select {
+  cursor: pointer;
+}
+
+
 @media (max-width: 992px) {
   .directorio-titulo {
     font-size: 2.4em;
@@ -86,6 +126,17 @@
   }
   .directorio-seccion h3 {
     font-size: 1.6em;
+  }
+    .directorio-filtros {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .directorio-filtros input,
+  .directorio-filtros select {
+    width: 100%;
   }
 }
 
