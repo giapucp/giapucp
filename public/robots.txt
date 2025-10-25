@@ -1,0 +1,8 @@
+# Otros bots
+User-agent: *
+Allow: /
+Disallow: /api/          # Bloquea rastreo de APIs
+Disallow: /_next/        # Bloquea archivos internos Next.js
+
+# Especificar sitemap
+Sitemap: https://giapucp.vercel.app/sitemap.xml
