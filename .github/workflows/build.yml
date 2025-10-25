@@ -2,16 +2,13 @@ name: Frontend CI
 on:
   push:
     paths:
-      - 'src/**'
+      - '**'  # O especifica las carpetas relevantes
       - '.github/workflows/build.yml'
 
 jobs:
   frontend:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: src
-        
+    
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -21,17 +18,25 @@ jobs:
       with:
         node-version: '22'
         
-    - name: Debug versions
+    - name: Debug project structure
       run: |
         echo "Node version: $(node --version)"
         echo "NPM version: $(npm --version)"
+        echo "Current directory: $(pwd)"
+        echo "Project structure:"
+        ls -la
+        if [ -f "package.json" ]; then
+          echo "✅ package.json found in root"
+        else
+          echo "❌ package.json NOT found in root"
+        fi
         
     - name: Install dependencies
-      run: npm ci  # Más confiable que npm install
+      run: npm ci
       
     - name: Check available scripts
       run: npm run
-      continue-on-error: true  # Esto no falla el workflow
+      continue-on-error: true
       
     - name: Run lint if available
       run: npm run lint || echo "No lint script found"
@@ -39,10 +44,25 @@ jobs:
     - name: Run tests if available
       run: npm run test || echo "No test script found"
       
-    - name: Build project (essential)
+    - name: Build Next.js project
       run: npm run build
       
-    - name: Verify build
+    - name: Verify Next.js build
       run: |
-        ls -la dist/  # o la carpeta de build que uses
-        echo "✅ Build completed successfully"
+        echo "Build output:"
+        if [ -d ".next" ]; then
+          echo "✅ .next folder found (Next.js build)"
+          ls -la .next/
+        elif [ -d "dist" ]; then
+          echo "✅ dist folder found"
+          ls -la dist/
+        elif [ -d "out" ]; then
+          echo "✅ out folder found (static export)"
+          ls -la out/
+        elif [ -d "build" ]; then
+          echo "✅ build folder found"
+          ls -la build/
+        else
+          echo "❌ No build folder found. Checking entire structure:"
+          find . -type d -name ".next" -o -name "dist" -o -name "out" -o -name "build" 2>/dev/null
+        fi
