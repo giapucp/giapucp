@@ -39,3 +39,10 @@
   object-fit: cover;
   display: block;
 }
+
+.tarjeta-noticia-subtitle {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+  line-height: 1.4;
+}

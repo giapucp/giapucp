@@ -47,6 +47,13 @@
   padding: 0 8px;
 }
 
+.miembro-cargo {
+  font-size: 0.9em;
+  color: #777;
+  margin-top: 0;
+  padding: 0 8px;
+}
+
 .miembro-card {
   opacity: 0;
   transform: translateY(20px);

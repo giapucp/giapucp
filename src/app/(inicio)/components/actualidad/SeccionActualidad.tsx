@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { fetchNoticiasRecientes } from "@/app/(inicio)/api/strapi";
-import { Noticia } from "@/app/(inicio)/types/types";
+import { fetchNoticiasRecientes } from "../../api/ContentfulInicio"; // Cambia la importación
+import { Noticia } from "../../../types/types";
 import styles from "./SeccionActualidad.module.css";
 
 export default function SeccionActualidad() {
@@ -68,6 +68,17 @@ export default function SeccionActualidad() {
   };
 
   const previewIndices = getPreviewPositions();
+
+  // Función para obtener el texto de descripción
+  // En SeccionActualidad.tsx - actualiza la función getDescripcion
+  const getDescripcion = (noticia: Noticia): string => {
+    if (noticia.subtitulo) {
+      return noticia.subtitulo.length > 150 
+        ? noticia.subtitulo.substring(0, 150) + "..." 
+        : noticia.subtitulo;
+    }
+    return "Sin descripción disponible";
+  };
 
   if (loading)
     return (
@@ -138,16 +149,15 @@ export default function SeccionActualidad() {
                   {noticia.titulo}
                 </div>
                 <div className={styles.des}>
-                  {noticia.textoFinal ||
-                    (noticia.contenido || "").substring(0, 150) + "..."}
+                  {getDescripcion(noticia)}
                 </div>
-                <div className={styles.categorias}>
-                  {noticia.categorias?.map((cat) => (
-                    <span key={cat.id} className={styles.categoriaTag}>
-                      {cat.nombre}
-                    </span>
-                  ))}
-                </div>
+                
+                {/* Mostrar banner si existe */}
+                {noticia.banner && (
+                  <div className={styles.banner}>
+                    {noticia.banner}
+                  </div>
+                )}
               </div>
             </div>
           );

@@ -138,6 +138,29 @@
   margin-bottom: 1.5rem;
 }
 
+.modal-noticia-subtitle {
+  font-size: 1.2rem;
+  color: #e2e8f0;
+  margin-top: 0.5rem;
+  font-weight: 400;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.modal-noticia-banner {
+  background: #f8f9fa;
+  border-left: 4px solid #3b82f6;
+  padding: 0.75rem 1rem;
+  margin: 1rem 0;
+  border-radius: 0 4px 4px 0;
+}
+
+.banner-text {
+  color: #374151;
+  font-weight: 500;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
 @media (max-width: 768px) {
   .modal-noticia-title {
     font-size: 1.75rem;

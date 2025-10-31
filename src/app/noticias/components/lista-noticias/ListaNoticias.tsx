@@ -1,13 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
-import type { Noticia, YearWithRows } from "../../types/types";
+import type { Noticia, YearWithRows } from "../../../types/types";
 import { Newspaper } from "lucide-react";
 import ModalNoticia from "../modal-noticia/ModalNoticia";
 import { chunkArray } from "../../utils/arrayUtils";
-
 import NewsContentDisplay from "./NewsContentDisplay";
-
-import { fetchNoticias } from "../../api/strapi";
+import { fetchNoticias } from "../../api/ContentfulNoticias";
 import "./ListaNoticias.css";
 
 const ListaNoticias = () => {
@@ -31,6 +29,7 @@ const ListaNoticias = () => {
           throw new Error("No se encontraron noticias");
         }
         setCantNoticias(noticias.length);
+        
         // Agrupar por año
         const groupedByYear: Record<string, Noticia[]> = noticias.reduce((acc: Record<string, Noticia[]>, noticia: Noticia) => {
           try {
@@ -74,17 +73,7 @@ const ListaNoticias = () => {
   }, []);
 
   const abrirModal = (noticia: Noticia) => {
-    // Construir URL completa de la imagen si es necesario
-    let portadaUrl = noticia.portada;
-    const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL?.replace("/api", "") || "http://localhost:1337";
-    if (portadaUrl && !portadaUrl.startsWith("http")) {
-      portadaUrl = `${baseUrl}${portadaUrl}`;
-    }
-
-    setNoticiaSeleccionada({
-      ...noticia,
-      portada: portadaUrl || "/placeholder-noticia.jpg",
-    });
+    setNoticiaSeleccionada(noticia);
     setModalAbierto(true);
     document.body.style.overflow = "hidden";
   };
