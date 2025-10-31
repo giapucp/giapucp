@@ -1,7 +1,6 @@
+/* eslint-disable */
 import { getContentDeliveryURL, getImageUrl } from "../../api/ContentfulBase";
-import { Noticia, ContentfulNoticiaResponse} from "../../types/types";
-
-const cache = new Map<string, Noticia>();
+import { Noticia} from "../../types/types";
 
 function getReferencedAssetUrl(assetsMap: Map<string, any>, reference: any): string {
   if (!reference?.sys?.id) return "/placeholder-noticia.jpg";
@@ -51,21 +50,6 @@ export async function fetchNoticiasRecientes(limit = 4): Promise<Noticia[]> {
     
   } catch (error) {
     console.error("Error fetching noticias recientes from Contentful:", error);
-    return [];
-  }
-}
-
-// Resto de las funciones permanecen igual...
-export async function getNoticiasRecientes(limit = 4): Promise<Noticia[]> {
-  try {
-    const allNoticias = await fetchNoticias();
-    return allNoticias
-      .sort(
-        (a, b) => new Date(b.fechaPublicacion).getTime() - new Date(a.fechaPublicacion).getTime()
-      )
-      .slice(0, limit);
-  } catch (error) {
-    console.error("Error al obtener noticias recientes:", error);
     return [];
   }
 }

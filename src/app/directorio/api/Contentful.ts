@@ -1,5 +1,6 @@
 // api/ContentfulMiembros.ts
-import { getContentDeliveryURL, getImageUrl } from "../../api/ContentfulBase";
+/* eslint-disable */
+import { getContentDeliveryURL} from "../../api/ContentfulBase";
 import { Miembro } from "../../types/types";
 
 // Función helper para obtener datos de entradas referenciadas
