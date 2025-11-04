@@ -284,15 +284,15 @@
   }
 
   .item[data-position="0"] .content .title {
-
     font-size: 2em;
-    width: 80vw;
+    width: 100vw;
   }
 
   .item[data-position="0"] .des{
-    width: 80vw;
-    max-width: 80%;
+    width: 100vw;
+    max-width: 200%;
     font-size: 1.3em;
+    font-weight: 600;
   }
 
   .carousel .list .item[data-preview-position="1"],

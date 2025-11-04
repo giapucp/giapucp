@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { fetchNoticiasRecientes } from "../../api/ContentfulInicio"; // Cambia la importación
+import { fetchNoticiasRecientes } from "../../api/ContentfulInicio";
 import { Noticia } from "../../../types/types";
 import styles from "./SeccionActualidad.module.css";
 
@@ -44,6 +44,7 @@ export default function SeccionActualidad() {
     if (isAnimating || noticias.length === 0) return;
 
     setIsAnimating(true);
+    
     if (direction === "next") {
       setCurrentIndex((prev) => (prev + 1) % noticias.length);
     } else {
@@ -55,11 +56,12 @@ export default function SeccionActualidad() {
     }, 1500);
   };
 
+  // Función corregida para obtener las posiciones de preview
   const getPreviewPositions = () => {
     if (noticias.length <= 1) return [] as number[];
 
     const previewIndices: number[] = [];
-    const maxPreviews = Math.min(3, noticias.length);
+    const maxPreviews = Math.min(3, noticias.length - 1); // -1 porque el current no cuenta
 
     for (let i = 1; i <= maxPreviews; i++) {
       previewIndices.push((currentIndex + i) % noticias.length);
@@ -69,12 +71,10 @@ export default function SeccionActualidad() {
 
   const previewIndices = getPreviewPositions();
 
-  // Función para obtener el texto de descripción
-  // En SeccionActualidad.tsx - actualiza la función getDescripcion
   const getDescripcion = (noticia: Noticia): string => {
     if (noticia.subtitulo) {
       return noticia.subtitulo.length > 150 
-        ? noticia.subtitulo.substring(0, 150) + "..." 
+        ? noticia.subtitulo.substring(0, 150) + " ..."
         : noticia.subtitulo;
     }
     return "Sin descripción disponible";
@@ -127,25 +127,26 @@ export default function SeccionActualidad() {
           const previewPosition = previewIndices.indexOf(index) + 1;
           const portadaUrl = noticia.portada || "/placeholder-noticia.jpg";
 
+          // Solo aplicar data attributes si es necesario
+          const dataAttrs: any = {};
+          
+          if (isCurrent) {
+            dataAttrs['data-position'] = 0;
+          } else if (previewPosition > 0) {
+            dataAttrs['data-preview-position'] = previewPosition;
+          }
+
           return (
             <div
               key={noticia.id}
-              className={`${styles.item} ${isCurrent ? styles.active : ""}`}
+              className={styles.item}
               style={{
                 backgroundImage: `url(${portadaUrl})`,
-                willChange: "transform, opacity, width, height",
               }}
-              data-position={isCurrent ? 0 : undefined}
-              data-preview-position={
-                previewPosition > 0 &&
-                typeof window !== "undefined" &&
-                window.innerWidth < 768
-                  ? undefined
-                  : previewPosition
-              }
+              {...dataAttrs}
             >
               <div className={styles.content}>
-                <div className={styles.title} data-item={index + 1}>
+                <div className={styles.title}>
                   {noticia.titulo}
                 </div>
                 <div className={styles.des}>
@@ -167,9 +168,9 @@ export default function SeccionActualidad() {
           >
             ←
           </button>
-          <div className="progress-bar">
-            <div
-              className="progress"
+          <div className={styles.progressBar}>
+            <div 
+              className={styles.progress}
               style={{
                 width: `${((currentIndex + 1) / noticias.length) * 100}%`,
               }}
