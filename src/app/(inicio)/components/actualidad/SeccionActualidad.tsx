@@ -151,13 +151,6 @@ export default function SeccionActualidad() {
                 <div className={styles.des}>
                   {getDescripcion(noticia)}
                 </div>
-                
-                {/* Mostrar banner si existe */}
-                {noticia.banner && (
-                  <div className={styles.banner}>
-                    {noticia.banner}
-                  </div>
-                )}
               </div>
             </div>
           );
