@@ -128,6 +128,7 @@ export default function SeccionActualidad() {
           const portadaUrl = noticia.portada || "/placeholder-noticia.jpg";
 
           // Solo aplicar data attributes si es necesario
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const dataAttrs: any = {};
           
           if (isCurrent) {
