@@ -6,6 +6,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "GIA PUCP",
   description: "Impulsando el desarrollo de proyectos aeroespaciales en el Perú. Grupo fundado en la Pontificia Universidad Católica del Perú.",
+  icons: {
+    icon: '/logo.png',
+  }
 };
 
 export default function RootLayout({
