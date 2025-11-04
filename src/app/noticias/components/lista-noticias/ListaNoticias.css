@@ -145,7 +145,34 @@
   margin-bottom: 0;
 }
 
+.noticias-titulo{
+  text-align: center;
+  font-size: 2.8em;
+  color: #000000;
+  margin-bottom: 40px;
+  font-weight: 700;
+  font-family: var(--font-display, sans-serif);
+  letter-spacing: -0.02em;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.noticias-titulo::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #00f2fe, #4facfe);
+  border-radius: 2px;
+}
+
 @media (max-width: 768px) {
+  .directorio-titulo {
+    font-size: 2.4em;
+  }
   .year-indicator {
     right: 0px;
     padding-right: 20px;
