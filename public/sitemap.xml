@@ -26,7 +26,7 @@
   
   <!-- Donaciones -->
   <url>
-    <loc>https://giapucp.vercel.app/servicios/donar</loc>
+    <loc>https://giapucp.vercel.app/donar</loc>
     <lastmod>2025-01-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -34,7 +34,7 @@
 
   <!-- Contacto -->
   <url>
-    <loc>https://giapucp.vercel.app/servicios/contacto</loc>
+    <loc>https://giapucp.vercel.app/contacto</loc>
     <lastmod>2025-01-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
