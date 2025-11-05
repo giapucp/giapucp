@@ -180,6 +180,7 @@ export default function DonatePage() {
                 height={200}
               />
             </div>
+
           </div>
 
           {/* Contenedor de sponsors en columna para móvil, fila para desktop */}
@@ -198,6 +199,16 @@ export default function DonatePage() {
               <Image 
                 src="/sponsors/sponsor1.png" 
                 alt="RADIOASTRONOMIA PUCP" 
+                className="object-contain rounded-2xl max-w-full h-auto" 
+                loading="lazy" 
+                width={200}
+                height={200}
+              />
+            </div>
+            <div className="flex items-center justify-center px-2 w-full md:w-1/2">
+              <Image 
+                src="/sponsors/sponsor4.png" 
+                alt="Enrique López Albújar" 
                 className="object-contain rounded-2xl max-w-full h-auto" 
                 loading="lazy" 
                 width={200}
