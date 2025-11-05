@@ -1,9 +1,13 @@
 [
+  { "nombre": "Nayeli Florencia Barrera Chinchay", "monto": 15},
+  { "nombre": "VIJICSA", "monto": 30},
   { "nombre": "Pedro Enrique Reyes Cabezas", "monto": 15 },
   { "nombre": "Víctor Arturo Centa Cueva", "monto": 60 },
   { "nombre": "Diego Santiago", "monto": 15 },
   { "nombre": "Jhonnell Fernandez Cornejo", "monto": 15 },
-  { "nombre": "Natalia Coronel", "monto": 15 },
+  { "nombre": "Natalia Coronel Veronica", "monto": 15 },
   { "nombre": "Bertha Emery Ylave Prado", "monto": 30 },
-  { "nombre": "Braulio Ulises Antayhua Ylave", "monto": 15 }
+  { "nombre": "Braulio Ulises Antayhua Ylave", "monto": 15 },
+  { "nombre": "Rodrigo Sebastián Laguna Chite", "monto": 15 },
+  { "nombre": "Kelsy Paola Ysuhuaylas", "monto": 25 }
 ]
