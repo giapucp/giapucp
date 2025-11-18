@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import Image from "next/image";
 import "./ModalNoticia.css";
 import { Noticia } from "../../../types/types";
-import { RichTextRenderer } from "../../../../components/comun/RichTextRenderer"; // Ajusta la ruta según tu estructura
+import { RichTextRenderer } from "../../../../components/comun/RichTextRenderer";
 
 interface ModalNoticiaProps {
   noticia: Noticia;
@@ -18,9 +18,14 @@ const ModalNoticia: React.FC<ModalNoticiaProps> = ({ noticia, onClose }) => {
         onClose();
       }
     };
+    
+    // Prevenir scroll del body cuando el modal está abierto
+    document.body.style.overflow = "hidden";
+    
     window.addEventListener("keydown", handleKeyDown);
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "unset";
     };
   }, [onClose]);
 
@@ -32,10 +37,19 @@ const ModalNoticia: React.FC<ModalNoticiaProps> = ({ noticia, onClose }) => {
         tabIndex={0}
         role="dialog"
         aria-modal="true"
+        aria-labelledby="modal-noticia-title"
       >
-        <button className="modal-noticia-close" onClick={onClose} aria-label="Cerrar">
-          &times;
+        <button 
+          className="modal-noticia-close" 
+          onClick={onClose} 
+          aria-label="Cerrar modal"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
         </button>
+        
         <div className="modal-noticia-header">
           <Image
             src={noticia.portada || "/placeholder.jpg"}
@@ -47,9 +61,14 @@ const ModalNoticia: React.FC<ModalNoticiaProps> = ({ noticia, onClose }) => {
             unoptimized={true}
           />
           <div className="modal-noticia-gradient"></div>
-          <h2 className="modal-noticia-title">{noticia.titulo}</h2>
         </div>
+        
         <div className="modal-noticia-content">
+          {/* Título movido a la sección de contenido */}
+          <h1 id="modal-noticia-title" className="modal-noticia-title">
+            {noticia.titulo}
+          </h1>
+          
           <p className="modal-noticia-date">
             {noticia.fechaPublicacion 
               ? new Date(noticia.fechaPublicacion).toLocaleDateString('es-ES', {
