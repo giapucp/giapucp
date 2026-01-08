@@ -146,8 +146,8 @@ function NavbarAnimado() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link href="/directorio" className="nav-link">
-                <span className="nav-text">Directorio</span>
+              <Link href="/equipo" className="nav-link">
+                <span className="nav-text">Equipo</span>
                 <span className="nav-indicator"></span>
               </Link>
             </li>
@@ -185,11 +185,11 @@ function NavbarAnimado() {
               </li>
               <li className="mobile-nav-item">
                 <Link
-                  href="/directorio"
+                  href="/equipo"
                   className="mobile-nav-link"
                   onClick={closeMenu}
                 >
-                  <span className="mobile-nav-text">Directorio</span>
+                  <span className="mobile-nav-text">Equipo</span>
                 </Link>
               </li>
               <li className="mobile-nav-item">
