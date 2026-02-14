@@ -101,7 +101,7 @@ const RumboBrasil: React.FC = () => {
       </section>
       <Image
             ref={kuntur1ImageRef}
-            src="/kuntur1.png"
+            src="/Kuntur1.png"
             alt="Kuntur 1 in Brasil"
             className="kuntur1-image"
             loading="lazy"
