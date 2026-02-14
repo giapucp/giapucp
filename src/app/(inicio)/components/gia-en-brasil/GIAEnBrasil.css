@@ -10,7 +10,6 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 5vh 10%;
   width: 100%;
   box-sizing: border-box;
   gap: 5%;
@@ -59,6 +58,21 @@
   max-width: 300px;
   height: auto;
   object-fit: contain;
+}
+
+.kuntur1-image {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 2.5rem;
+}
+
+.misiones-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
 }
 
 @media (max-width: 900px) {

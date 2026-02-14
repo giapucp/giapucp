@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from 'next/image';
-import "./RumboBrasil.css";
+import "./GIAEnBrasil.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,7 +15,9 @@ const RumboBrasil: React.FC = () => {
   const rumboSubtitleRef = useRef<HTMLHeadingElement>(null);
   const rumboTextRef = useRef<HTMLParagraphElement>(null);
   const rumboImageRef = useRef<HTMLImageElement>(null);
-
+  const kuntur1ImageRef = useRef<HTMLImageElement>(null);
+  const logoImageRef = useRef<HTMLImageElement>(null);
+  
   useEffect(() => {
     const createScrollTriggerAnimation = (
       targetRef: React.RefObject<Element>,
@@ -72,20 +74,17 @@ const RumboBrasil: React.FC = () => {
     <div className="page4 flex flex-col items-center">
       <section
         ref={rumboBrasilRef}
-        className="rumbo-a-brasil w-full min-h-[50vh] flex justify-center items-center bg-white text-black"
+        className="rumbo-a-brasil w-full min-h-[35vh] flex justify-center items-center bg-white text-black"
       >
         <div className="rumbo-content">
           <h1 ref={rumboTitleRef} className="rumbo-title">
-            RUMBO A BRASIL
+            GIA EN BRASIL
           </h1>
           <h2 ref={rumboSubtitleRef} className="rumbo-subtitle">
             Latin America Space Challenge <br /> 6ta edición
           </h2>
           <p ref={rumboTextRef} className="rumbo-text">
-            Oficialmente ya estamos dentro de la lista de participantes de esta
-            nueva edición que se llevará a cabo entre el 5 y 8 de noviembre de
-            2025, en las ciudades de Bauru e Iacanga en el estado de São Paulo,
-            Brasil.
+            Nuestra participación en el evento fue notoria. Obtuvimos un gran sexto puesto en la sección de satélites con nuestro MiSat y nuestro Kuntur 1 logró un notable séptimo puesto en la sección de cohetería de 500 metros.
           </p>
         </div>
         <div className="rumbo-image-container">
@@ -95,11 +94,21 @@ const RumboBrasil: React.FC = () => {
             alt="LASC Sixth Edition Rocket-Satellite"
             className="rumbo-image"
             loading="lazy"
-            width={500}
-            height={500}
+            width={200}
+            height={200}
           />
         </div>
       </section>
+      <Image
+            ref={kuntur1ImageRef}
+            src="/kuntur1.png"
+            alt="Kuntur 1 in Brasil"
+            className="kuntur1-image"
+            loading="lazy"
+            width={2000}
+            height={2000}
+          />
+     
     </div>
   );
 };
