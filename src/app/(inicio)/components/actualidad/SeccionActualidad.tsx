@@ -7,7 +7,6 @@ import styles from "./SeccionActualidad.module.css";
 
 export default function SeccionActualidad() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
   const [noticias, setNoticias] = useState<Noticia[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -18,7 +17,7 @@ export default function SeccionActualidad() {
     const load = async () => {
       try {
         setLoading(true);
-        const data = await fetchNoticiasRecientes(5);
+        const data = await fetchNoticiasRecientes(10);
         if (mounted) {
           setNoticias(data);
           setError(null);
@@ -40,156 +39,129 @@ export default function SeccionActualidad() {
     };
   }, []);
 
-  const handleNavigation = (direction: "next" | "prev") => {
-    if (isAnimating || noticias.length === 0) return;
-
-    setIsAnimating(true);
-    
-    if (direction === "next") {
-      setCurrentIndex((prev) => (prev + 1) % noticias.length);
-    } else {
-      setCurrentIndex((prev) => (prev - 1 + noticias.length) % noticias.length);
-    }
-
-    setTimeout(() => {
-      setIsAnimating(false);
-    }, 1500);
+  const handleSelectNews = (index: number) => {
+    setCurrentIndex(index);
   };
-
-  // Función corregida para obtener las posiciones de preview
-  const getPreviewPositions = () => {
-    if (noticias.length <= 1) return [] as number[];
-
-    const previewIndices: number[] = [];
-    const maxPreviews = Math.min(3, noticias.length - 1); // -1 porque el current no cuenta
-
-    for (let i = 1; i <= maxPreviews; i++) {
-      previewIndices.push((currentIndex + i) % noticias.length);
-    }
-    return previewIndices;
-  };
-
-  const previewIndices = getPreviewPositions();
 
   const getDescripcion = (noticia: Noticia): string => {
     if (noticia.subtitulo) {
-      return noticia.subtitulo.length > 150 
-        ? noticia.subtitulo.substring(0, 150) + " ..."
+      return noticia.subtitulo.length > 200 
+        ? noticia.subtitulo.substring(0, 200) + "..."
         : noticia.subtitulo;
     }
     return "Sin descripción disponible";
   };
 
-  if (loading)
-    return (
-      <div className="flex justify-center items-center h-[50vh] py-8 px-4">
-        <div className="text-center">
-          <p className="mt-4 text-xl font-medium text-gray-700 animate-pulse">
-            Cargando noticias...
-          </p>
-        </div>
-      </div>
-    );
+  const formatDate = (dateString?: string) => {
+    if (!dateString) return "";
+    try {
+      const date = new Date(dateString);
+      return new Intl.DateTimeFormat('es', {
+        day: '2-digit',
+        month: 'short',
+        year: 'numeric'
+      }).format(date);
+    } catch {
+      return "";
+    }
+  };
 
-  if (error)
+  if (loading) {
     return (
-      <div className="flex justify-center items-center h-[50vh] py-8 px-4">
-        <div className="text-center">
-          <p className="mt-4 text-xl font-medium text-red-600">{error}</p>
-          <button
-            onClick={() => window.location.reload()}
-            className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-          >
-            Reintentar
-          </button>
-        </div>
+      <div className={styles.loadingContainer}>
+        <div className={styles.loadingSpinner} />
+        <p>Cargando noticias...</p>
       </div>
     );
+  }
 
-  if (noticias.length === 0)
+  if (error) {
     return (
-      <div className="flex justify-center items-center h-[50vh] py-8 px-4">
-        <div className="text-center">
-          <p className="mt-4 text-xl font-medium text-gray-700">
-            No hay noticias disponibles en este momento.
-          </p>
-        </div>
+      <div className={styles.errorContainer}>
+        <p>{error}</p>
+        <button 
+          className={styles.retryButton}
+          onClick={() => window.location.reload()}
+        >
+          Reintentar
+        </button>
       </div>
     );
+  }
+
+  if (noticias.length === 0) {
+    return (
+      <div className={styles.emptyContainer}>
+        <p>No hay noticias disponibles en este momento.</p>
+      </div>
+    );
+  }
+
+  const currentNews = noticias[currentIndex];
+  const otherNews = noticias.filter((_, index) => index !== currentIndex);
 
   return (
-    <div className={styles.carousel}>
+    <div className={styles.container}>
       <h2 className={styles.titleRecent}>Actualidad</h2>
 
-      <div className={styles.list}>
-        {noticias.map((noticia, index) => {
-          const isCurrent = index === currentIndex;
-          const previewPosition = previewIndices.indexOf(index) + 1;
-          const portadaUrl = noticia.portada || "/placeholder-noticia.jpg";
-
-          // Solo aplicar data attributes si es necesario
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          const dataAttrs: any = {};
-          
-          if (isCurrent) {
-            dataAttrs['data-position'] = 0;
-          } else if (previewPosition > 0) {
-            dataAttrs['data-preview-position'] = previewPosition;
-          }
-
-          return (
-            <div
-              key={noticia.id}
-              className={styles.item}
-              style={{
-                backgroundImage: `url(${portadaUrl})`,
-              }}
-              {...dataAttrs}
-            >
-              <div className={styles.content}>
-                <div className={styles.title}>
-                  {noticia.titulo}
-                </div>
-                <div className={styles.des}>
-                  {getDescripcion(noticia)}
-                </div>
-              </div>
+      <div className={styles.mainLayout}>
+        {/* Columna principal - Noticia destacada */}
+        <div className={styles.featuredColumn}>
+          <div 
+            className={styles.featuredImage}
+            style={{
+              backgroundImage: `url(${currentNews.portada || "/placeholder-noticia.jpg"})`
+            }}
+          >
+            <div className={styles.featuredContent}>
+              <h3 className={styles.featuredTitle}>
+                {currentNews.titulo}
+              </h3>
+              <p className={styles.featuredDescription}>
+                {getDescripcion(currentNews)}
+              </p>
             </div>
-          );
-        })}
-      </div>
-
-      {noticias.length > 1 && (
-        <div className={styles.arrows}>
-          <button
-            className={styles.prev}
-            onClick={() => handleNavigation("prev")}
-            disabled={isAnimating}
-            aria-label="Noticia anterior"
-          >
-            ←
-          </button>
-          <div className={styles.progressBar}>
-            <div 
-              className={styles.progress}
-              style={{
-                width: `${((currentIndex + 1) / noticias.length) * 100}%`,
-              }}
-            ></div>
-          </div>
-          <button
-            className={styles.next}
-            onClick={() => handleNavigation("next")}
-            disabled={isAnimating}
-            aria-label="Siguiente noticia"
-          >
-            →
-          </button>
-          <div className={styles.slideNumber}>
-            {`${(currentIndex + 1).toString().padStart(2, "0")}/${noticias.length.toString().padStart(2, "0")}`}
           </div>
         </div>
-      )}
+
+        {/* Columna secundaria - Noticias antiguas */}
+        <div className={styles.secondaryColumn}>
+          {otherNews.map((noticia, idx) => {
+            const originalIndex = noticias.findIndex(n => n.id === noticia.id);
+            return (
+              <div
+                key={noticia.id}
+                className={`${styles.oldNewsCard} ${
+                  originalIndex === currentIndex ? styles.active : ""
+                }`}
+                onClick={() => handleSelectNews(originalIndex)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    handleSelectNews(originalIndex);
+                  }
+                }}
+              >
+                <div 
+                  className={styles.oldNewsImage}
+                  style={{
+                    backgroundImage: `url(${noticia.portada || "/placeholder-noticia.jpg"})`
+                  }}
+                />
+                <div className={styles.oldNewsContent}>
+                  <h4 className={styles.oldNewsTitle}>
+                    {noticia.titulo}
+                  </h4>
+                  <span className={styles.oldNewsDate}>
+                    {formatDate(noticia.fechaPublicacion)}
+                  </span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 }
