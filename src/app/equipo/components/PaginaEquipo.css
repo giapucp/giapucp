@@ -1,5 +1,5 @@
 .pagina-directorio-container {
-  padding-top: 40px;
+  padding-top: 30px;
   padding-bottom: 40px;
   padding-left: 15%;
   padding-right: 15%;
@@ -177,7 +177,6 @@
 
 @media (max-width: 768px) {
   .pagina-directorio-container {
-    padding-top: 80px;
     padding-left: 15px;
     padding-right: 15px;
   }
