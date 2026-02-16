@@ -6,7 +6,6 @@
   display: flex; /* Permite organizar el contenido con flexbox */
   flex-direction: column; /* Apila los elementos hijos verticalmente */
   overflow-x: hidden; /* Evita barras de desplazamiento horizontal no deseadas */
-  padding-top: 80px; /* IMPORTANTE: Deja espacio para el Navbar fijo en la parte superior. Ajusta este valor si tu Navbar tiene otra altura. */
   box-sizing: border-box; /* Incluye el padding en el cálculo del ancho y alto total */
 }
 

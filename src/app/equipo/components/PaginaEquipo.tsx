@@ -5,11 +5,12 @@ import Navbar from "@/components/comun/navbar/Navbar"
 import MiembroCard from "./MiembroCard"
 import { fetchMiembros } from "../api/Contentful"
 import type { Miembro } from "../../types/types"
-import "./PaginaDirectorio.css"
+import "./PaginaEquipo.css"
 
 import gsap from "gsap"
+import Banner from "@/components/comun/banner/Banner"
 
-const PaginaDirectorio = () => {
+const PaginaEquipo = () => {
   const [miembros, setMiembros] = useState<Miembro[]>([])
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedArea, setSelectedArea] = useState("Todos")
@@ -102,8 +103,13 @@ const PaginaDirectorio = () => {
   return (
     <>
       <Navbar />
+      <Banner
+          nombre="equipo"
+          titulo="Conoce Nuestro Equipo"
+          altura="lg"
+          />
       <div className="pagina-directorio-container" ref={pageContainerRef}>
-        <h2 className="directorio-titulo">Equipo</h2>
+  
 
         <div className="directorio-filtros">
           <select value={selectedArea} onChange={(e) => setSelectedArea(e.target.value)}>
@@ -179,4 +185,4 @@ const PaginaDirectorio = () => {
   )
 }
 
-export default PaginaDirectorio
+export default PaginaEquipo

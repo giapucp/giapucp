@@ -1,5 +1,5 @@
 .pagina-directorio-container {
-  padding-top: 100px;
+  padding-top: 40px;
   padding-bottom: 40px;
   max-width: 1200px;
   margin: 0 auto;
@@ -59,7 +59,7 @@
 }
 
 .directorio-seccion-header:hover h3 {
-  color: #4facfe;
+  color: #00548c;
 }
 
 .directorio-seccion h3 {

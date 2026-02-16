@@ -1,9 +1,9 @@
-import PaginaDirectorio from "./components/PaginaDirectorio";
+import PaginaEquipo from "./components/PaginaEquipo";
 
-export default function Directorio() {
+export default function Equipo() {
   return (
     <main>
-      <PaginaDirectorio />
+      <PaginaEquipo />
     </main>
   );
 }

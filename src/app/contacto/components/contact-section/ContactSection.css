@@ -1,5 +1,4 @@
 .contact-section-background {
-  background: linear-gradient(160deg, #000000 30%, #00548c, #7fc0ba, #ffffff);
   min-height: calc(100vh - 200px); /* Ajustado para que quepa en viewport */
   display: flex;
   align-items: center;

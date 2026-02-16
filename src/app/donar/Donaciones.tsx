@@ -58,19 +58,19 @@ export default function DonatePage() {
     : {};
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-green-100 to-green-300 flex items-center justify-center p-4 pt-24">
+    <main className="flex items-center justify-center p-16">
   <div className="w-full max-w-6xl mx-auto">
     {/* Contenedor principal que se vuelve column en móvil */}
     <div className="flex flex-col lg:flex-row items-start justify-between gap-6">
       
       {/* Sección izquierda - Donaciones */}
-      <section className="w-full lg:max-w-2xl bg-gradient-to-br from-green-50 to-green-200 rounded-3xl shadow-2xl overflow-hidden">
+      <section className="w-full lg:max-w-2xl rounded-3xl shadow-2xl overflow-hidden">
         {/* Header de la sección */}
         <div className="px-4 py-2 md:px-5 md:py-3 text-center border-b border-green-100">
-          <h1 className="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-green-700 mb-1 tracking-tight font-barlow-condensed">
+          <h1 className="text-3xl md:text-4xl font-black ">
             Construyamos este camino juntos
           </h1>
-          <h2 className="text-lg md:text-xl text-green-800 font-medium">
+          <h2 className="text-lg md:text-xl font-medium">
             Sé parte de nuestra misión impulsando la ingeniería aeroespacial
           </h2>
         </div>
@@ -78,7 +78,7 @@ export default function DonatePage() {
         {/* Tarjetas QR y Cuenta Bancaria*/}
         <div className="p-4 md:p-6 flex flex-col lg:flex-row items-center justify-center gap-6">
           {/* Tarjeta QR */}
-          <article className="w-full lg:w-1/2 min-h-[410px] bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-6 border border-green-200 shadow-sm flex flex-col items-center justify-between">
+          <article className="w-full lg:w-1/2 min-h-[410px] rounded-2xl p-6 border border-green-200 shadow-sm flex flex-col items-center justify-between">
             <span className="text-green-700 font-bold text-lg md:text-xl mb-4">Yape/Plin</span>
             <div className="w-64 h-64 md:w-50 md:h-50 rounded-xl overflow-hidden bg-white p-2 border-2 border-green-200 grid place-items-center shadow-sm mb-4">
               <Image
@@ -100,7 +100,7 @@ export default function DonatePage() {
           </article>
           
           {/* Tarjeta Cuenta Scotiabank */}
-          <article className="w-full lg:w-1/2 min-h-[410px] bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-6 border border-green-200 shadow-sm flex flex-col items-center justify-between">
+          <article className="w-full lg:w-1/2 min-h-[410px] rounded-2xl p-6 border border-green-200 shadow-sm flex flex-col items-center justify-between">
             <span className="text-green-700 font-bold text-lg md:text-xl mb-4">Cuenta Scotiabank</span>
             <div className="w-full max-w-xs rounded-xl bg-white p-4 border-2 border-green-200 shadow-sm mb-4 flex flex-col justify-center items-center">
               <div className="flex flex-col items-center gap-4 w-full">
@@ -167,9 +167,9 @@ export default function DonatePage() {
 
       {/* Sección derecha - Sponsors y Mural */}
       <div className="w-full lg:w-1/2 flex flex-col gap-4 mt-6 lg:mt-0 lg:ml-6">
-        <section className="w-full bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-6 shadow-xl">
+        <section className="w-full rounded-3xl p-6 shadow-2xl">
           <div className="w-full flex flex-col sm:flex-row items-center justify-between mb-3">
-            <h3 className="text-green-800 font-bold text-4xl mb-4 sm:mb-0">Sponsors</h3>
+            <h3 className="font-bold text-4xl mb-4 sm:mb-0">Sponsors</h3>
             <div className="flex items-center">
               <Image 
                 src="/sponsors/sponsor3.png" 
@@ -218,9 +218,8 @@ export default function DonatePage() {
           </div>
         </section>
 
-        <section className="w-full bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-6 shadow-2xl">
-          <h3 className="text-green-800 text-center font-bold text-2xl mb-4">Mural de Donaciones</h3>
-          <p className="text-sm text-green-700 mb-4">Últimas donaciones registradas</p>
+        <section className="w-full rounded-3xl p-6 shadow-2xl">
+          <h3 className="text-center font-bold text-2xl mb-4">Mural de Donaciones</h3>
           <div className="space-y-3 pr-2" style={muralStyle} aria-live="polite">
             {/* eslint-disable-next-line react/no-array-index-key, @typescript-eslint/no-explicit-any */}
             {mockDonaciones.map((d: any, idx: number) => (

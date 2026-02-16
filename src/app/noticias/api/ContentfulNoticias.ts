@@ -1,6 +1,6 @@
 // api/ContentfulNoticias.ts
 /* eslint-disable */
-import { getContentDeliveryURL } from "../../api/ContentfulBase";
+import { getContentDeliveryURL } from "../../../api/ContentfulBase";
 import { Noticia} from "../../types/types";
 
 const cache = new Map<string, Noticia>();

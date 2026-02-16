@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { getContentDeliveryURL, getImageUrl } from "../../api/ContentfulBase";
+import { getContentDeliveryURL, getImageUrl } from "../../../api/ContentfulBase";
 import { Noticia} from "../../types/types";
 
 function getReferencedAssetUrl(assetsMap: Map<string, any>, reference: any): string {

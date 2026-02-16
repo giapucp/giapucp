@@ -82,7 +82,7 @@ const Navbar: React.FC = () => {
             </li>
             <li className="nav-item">
               <Link href="/contacto" className="nav-link">
-                <span className="nav-text">Contáctanos</span>
+                <span className="nav-text">Contacto</span>
                 <span className="nav-indicator"></span>
               </Link>
             </li>
@@ -131,7 +131,7 @@ const Navbar: React.FC = () => {
                   className="mobile-nav-link"
                   onClick={closeMenu}
                 >
-                  <span className="mobile-nav-text">Contáctanos</span>
+                  <span className="mobile-nav-text">Contacto</span>
                 </Link>
               </li>
             </ul>

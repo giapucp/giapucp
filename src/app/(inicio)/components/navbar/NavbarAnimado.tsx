@@ -134,12 +134,6 @@ function NavbarAnimado() {
         <nav className="nav-links hidden md:block">
           <ul className="flex gap-16 text-lg m-0 p-0 list-none">
             <li className="nav-item">
-              <Link href="/" className="nav-link">
-                <span className="nav-text">Inicio</span>
-                <span className="nav-indicator"></span>
-              </Link>
-            </li>
-            <li className="nav-item">
               <Link href="/noticias" className="nav-link">
                 <span className="nav-text">Noticias</span>
                 <span className="nav-indicator"></span>
@@ -169,11 +163,6 @@ function NavbarAnimado() {
         <div className={`mobile-menu ${isMenuOpen ? "mobile-menu-open" : ""}`}>
           <nav className="mobile-nav">
             <ul className="mobile-nav-list">
-              <li className="mobile-nav-item">
-                <Link href="/" className="mobile-nav-link" onClick={closeMenu}>
-                  <span className="mobile-nav-text">Inicio</span>
-                </Link>
-              </li>
               <li className="mobile-nav-item">
                 <Link
                   href="/noticias"

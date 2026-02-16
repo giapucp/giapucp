@@ -6,7 +6,7 @@ const ContactSection = () => {
   return (
     <section className="contact-section-background contact-section-padding">
       {/* Bloque blanco con padding interno, bordes redondeados y sombra */}
-      <div className="contact-card">
+      <div className="w-full max-w-[1000px] mx-auto bg-white rounded-3xl shadow-2xl p-6">
         {/* Contenedor del contenido, que sí tendrá la línea divisoria interna */}
         <div className="contact-content-grid">
           {/* Lado izquierdo: Formulario */}
