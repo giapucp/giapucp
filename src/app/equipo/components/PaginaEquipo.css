@@ -1,7 +1,7 @@
 .pagina-directorio-container {
   padding-top: 40px;
   padding-bottom: 40px;
-  max-width: 1200px;
+  width: 1200px;
   margin: 0 auto;
   font-family: var(--font-primary, sans-serif);
   background-color: #ffffff;

@@ -102,12 +102,6 @@ const PaginaEquipo = () => {
 
   return (
     <>
-      <Navbar />
-      <Banner
-          nombre="equipo"
-          titulo="Conoce Nuestro Equipo"
-          altura="lg"
-          />
       <div className="pagina-directorio-container" ref={pageContainerRef}>
   
 
