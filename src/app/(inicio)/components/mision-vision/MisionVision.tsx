@@ -69,20 +69,23 @@ const MissionVisionSection: React.FC = () => {
             MISIÓN
           </h2>
           <p ref={missionTextRef} className="text-block">
-            Nuestra misión es impulsar el conocimiento científico y tecnológico,
-            formando profesionales íntegros capaces de liderar e innovar en el
-            campo aeroespacial, contribuyendo activamente al desarrollo
-            sostenible del país.
+            Formar ingenieros y científicos mediante la investigación y 
+            el desarrollo experimental en cohetería y ciencias espaciales, 
+            ejecutando proyectos reales que integren formación técnica 
+            aplicada, producción de conocimiento académico y validación 
+            tecnológica, contribuyendo al desarrollo del ecosistema a
+            eroespacial peruano desde la universidad.
           </p>
         </div>
-
         <div ref={dividerRef} className="divider-line" />
-
         <div className="vision-section">
           <p ref={visionTextRef} className="text-block">
-            Nuestra visión es consolidarnos como una comunidad académica de
-            excelencia, reconocida por su impacto en la investigación y
-            desarrollo aeroespacial a nivel nacional e internacional.
+            Ser el grupo universitario de referencia en cohetería experimental
+             y ciencias espaciales en el Perú, reconocido por su producción 
+             científica, la validación en vuelo de sus desarrollos, 
+             su aporte a la formación de talento de alto nivel y su capacidad 
+             de sostener operaciones mediante una estructura organizacional 
+             autónoma, profesional y financieramente viable.
           </p>
           <h2 ref={visionTitleRef} className="title-right">
             VISIÓN
