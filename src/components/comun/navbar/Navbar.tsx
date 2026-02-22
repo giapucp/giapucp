@@ -63,6 +63,12 @@ const Navbar: React.FC = () => {
               </Link>
             </li>
             <li className="nav-item">
+              <Link href="/proyectos" className="nav-link">
+                <span className="nav-text">Proyectos</span>
+                <span className="nav-indicator"></span>
+              </Link>
+            </li>
+            <li className="nav-item">
               <Link href="/noticias" className="nav-link">
                 <span className="nav-text">Noticias</span>
                 <span className="nav-indicator"></span>
@@ -96,6 +102,15 @@ const Navbar: React.FC = () => {
               <li className="mobile-nav-item">
                 <Link href="/" className="mobile-nav-link" onClick={closeMenu}>
                   <span className="mobile-nav-text">Inicio</span>
+                </Link>
+              </li>
+              <li className="mobile-nav-item">
+                <Link
+                  href="/proyectos"
+                  className="mobile-nav-link"
+                  onClick={closeMenu}
+                >
+                  <span className="mobile-nav-text">Proyectos</span>
                 </Link>
               </li>
               <li className="mobile-nav-item">

@@ -5,7 +5,7 @@ import Banner from "@/components/comun/banner/Banner"
 export default function Contacto() {
   return (
     <>
-      <Banner nombre="contacto" titulo="Contáctanos" altura="lg" />
+      <Banner nombre="contacto" titulo="Contáctanos" altura="xl" />
       <PaginaContacto />
     </>
   )

@@ -7,7 +7,7 @@ export default function Noticias() {
   return (
     <main>
       <Navbar />
-      <Banner nombre="noticias" titulo="Noticias" altura="lg" />
+      <Banner nombre="noticias" titulo="Noticias" altura="xl" />
       <PaginaNoticias />
     </main>
   );
