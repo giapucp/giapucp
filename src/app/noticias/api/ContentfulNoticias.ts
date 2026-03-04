@@ -19,7 +19,6 @@ function getReferencedAssetUrl(assetsMap: Map<string, any>, reference: any): str
 
 export async function fetchNoticias(): Promise<Noticia[]> {
   try {
-    console.log("Fetching noticias from Contentful...");
     
     // MODIFICACIÓN: Agregar parámetro de ordenación
     const url = `${getContentDeliveryURL("pageBlogPost", "", 2)}&order=-fields.fechaPublicacion`;
@@ -31,9 +30,7 @@ export async function fetchNoticias(): Promise<Noticia[]> {
     }
     
     const data = await response.json();
-    
-    console.log("Contentful noticias response:", data);
-    
+
     // Crear mapa de assets incluidos
     const assetsMap = new Map();
     if (data.includes?.Asset) {

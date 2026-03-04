@@ -31,7 +31,6 @@ export const getContentDeliveryURL = (table: string, additionalParams: string = 
     URL += `&include=${include}`;
   }
   
-  console.log("Contentful URL:", URL);
   return URL;
 };
 
