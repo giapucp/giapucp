@@ -20,7 +20,11 @@ function getReferencedAssetUrl(assetsMap: Map<string, any>, reference: any): str
 export async function fetchNoticias(): Promise<Noticia[]> {
   try {
     console.log("Fetching noticias from Contentful...");
-    const response = await fetch(getContentDeliveryURL("pageBlogPost", "", 2)); // Incluir referencias
+    
+    // MODIFICACIÓN: Agregar parámetro de ordenación
+    const url = `${getContentDeliveryURL("pageBlogPost", "", 2)}&order=-fields.fechaPublicacion`;
+    
+    const response = await fetch(url);
     
     if (!response.ok) {
       throw new Error(`Error HTTP: ${response.status}`);
@@ -63,11 +67,13 @@ export async function fetchNoticias(): Promise<Noticia[]> {
 }
 
 export async function fetchNoticiaById(id: string): Promise<Noticia | null> {
+  // Verificar caché primero
   if (cache.has(id)) {
     return cache.get(id) || null;
   }
   
   try {
+    // MODIFICACIÓN: También ordenar aquí si es necesario
     const response = await fetch(
       `${getContentDeliveryURL("pageBlogPost", "", 2)}&sys.id=${id}`
     );

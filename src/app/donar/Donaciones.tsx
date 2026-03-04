@@ -167,59 +167,61 @@ export default function DonatePage() {
 
       {/* Sección derecha - Sponsors y Mural */}
       <div className="w-full lg:w-1/2 flex flex-col gap-4 mt-6 lg:mt-0 lg:ml-6">
-        <section className="w-full rounded-3xl p-6 shadow-2xl">
-          <div className="w-full flex flex-col sm:flex-row items-center justify-between mb-3">
-            <h3 className="font-bold text-4xl mb-4 sm:mb-0">Sponsors</h3>
-            <div className="flex items-center">
+        <section className="w-full rounded-2xl p-6 shadow-2xl">
+          <h3 className="text-center font-bold text-3xl mb-4">Sponsors</h3>
+          
+          {/* Grid responsivo: 1 columna en móvil, 2 en tablet, 2x2 en desktop */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center justify-items-center">
+            
+            {/* Cada contenedor con altura grande en desktop */}
+            <div className="w-full h-40 sm:h-24 md:h-26 lg:h-32 xl:h-30 flex items-center justify-center p-4 bg-gray-50 rounded-2xl">
               <Image 
                 src="/sponsors/sponsor3.png" 
                 alt="KAME - EL" 
-                className="object-contain rounded-2xl" 
+                className="object-contain w-full h-full" 
                 loading="lazy" 
-                width={200}
-                height={200}
+                width={400}
+                height={400}
               />
             </div>
-
-          </div>
-
-          {/* Contenedor de sponsors en columna para móvil, fila para desktop */}
-          <div className="w-full flex flex-col md:flex-row items-center justify-center gap-6 py-2 mb-2">
-            <div className="flex items-center justify-center px-2 w-full md:w-1/2">
+            
+            <div className="w-full h-40 sm:h-24 md:h-26 lg:h-32 xl:h-30 flex items-center justify-center p-4 bg-gray-50 rounded-2xl">
               <Image 
                 src="/sponsors/sponsor2.png" 
                 alt="FACULTAD DE CIENCIAS E INGENIERIA PUCP" 
-                className="object-contain rounded-2xl max-w-full h-auto" 
+                className="object-contain w-full h-full" 
                 loading="lazy" 
-                width={200}
-                height={100}
+                width={400}
+                height={400}
               />
             </div>
-            <div className="flex items-center justify-center px-2 w-full md:w-1/2">
+            
+            <div className="w-full h-40 sm:h-24 md:h-26 lg:h-32 xl:h-30 flex items-center justify-center p-4 bg-gray-50 rounded-2xl">
               <Image 
                 src="/sponsors/sponsor1.png" 
                 alt="RADIOASTRONOMIA PUCP" 
-                className="object-contain rounded-2xl max-w-full h-auto" 
+                className="object-contain w-full h-full" 
                 loading="lazy" 
-                width={200}
-                height={200}
+                width={400}
+                height={400}
               />
             </div>
-            <div className="flex items-center justify-center px-2 w-full md:w-1/2">
+            
+            <div className="w-full h-40 sm:h-24 md:h-26 lg:h-32 xl:h-30 flex items-center justify-center p-4 bg-gray-50 rounded-2xl">
               <Image 
                 src="/sponsors/sponsor4.png" 
                 alt="Enrique López Albújar" 
-                className="object-contain rounded-2xl max-w-full h-auto" 
+                className="object-contain w-full h-full" 
                 loading="lazy" 
-                width={200}
-                height={200}
+                width={400}
+                height={400}
               />
             </div>
           </div>
         </section>
 
         <section className="w-full rounded-3xl p-6 shadow-2xl">
-          <h3 className="text-center font-bold text-2xl mb-4">Mural de Donaciones</h3>
+          <h3 className="text-center font-bold text-2xl mb-4">Apadrina Tu Cohete</h3>
           <div className="space-y-3 pr-2" style={muralStyle} aria-live="polite">
             {/* eslint-disable-next-line react/no-array-index-key, @typescript-eslint/no-explicit-any */}
             {mockDonaciones.map((d: any, idx: number) => (

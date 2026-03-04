@@ -66,7 +66,7 @@ const Footer: React.FC = () => {
               grupo.gia@pucp.edu.pe
             </p>
             <p className="text-base md:text-lg leading-relaxed mb-2 font-barlow-condensed">
-              +51 972285288
+              +51 963 065 928
             </p>
             <p className="text-base md:text-lg leading-relaxed flex items-center justify-center gap-2 font-barlow-condensed">
               Perú

@@ -7,21 +7,24 @@ export const ContactInfo = () => {
       icon: "/logos/instagram.png",
       text: "@gia_pucp",
       href: "https://www.instagram.com/gia_pucp",
+      isLink: true, // Agregamos esta propiedad
     },
     {
       icon: "/logos/linkedin.png",
       text: "GIA PUCP",
-      href: "https://www.linkedin.com/company/gia-pucp",
+      href: "https://www.linkedin.com/company/gia-at-pucp",
+      isLink: true,
     },
     {
       icon: "/logos/gmail.png",
       text: "grupo.gia@pucp.edu.pe",
-      href: "mailto:grupo.gia@pucp.edu.pe",
+      isLink: false, // No es un enlace
     },
     {
       icon: "/logos/ws.png",
-      text: "+51 972 285 288",
-      href: "https://wa.me/51972285288",
+      text: "+51 963 065 928",
+      href: "https://wa.me/51963065928",
+      isLink: true,
     },
   ];
 
@@ -33,23 +36,39 @@ export const ContactInfo = () => {
       </p>
 
       <div className="contact-links-list">
-        {contactLinks.map((link, index) => (
-          <a
-            key={index}
-            href={link.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="contact-link-item"
-          >
-            <Image
-              src={link.icon}
-              alt={link.text}
-              width={50}
-              height={50}
-            />
-            <span className="contact-link-text">{link.text}</span>
-          </a>
-        ))}
+        {contactLinks.map((link, index) => {
+          if (link.isLink) {
+            return (
+              <a
+                key={index}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-link-item"
+              >
+                <Image
+                  src={link.icon}
+                  alt={link.text}
+                  width={50}
+                  height={50}
+                />
+                <span className="contact-link-text">{link.text}</span>
+              </a>
+            );
+          } else {
+            return (
+              <div key={index} className="contact-link-item">
+                <Image
+                  src={link.icon}
+                  alt={link.text}
+                  width={50}
+                  height={50}
+                />
+                <span className="contact-link-text">{link.text}</span>
+              </div>
+            );
+          }
+        })}
       </div>
     </div>
   );
