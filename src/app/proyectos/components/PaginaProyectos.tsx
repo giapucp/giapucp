@@ -1,9 +1,15 @@
+import Link from 'next/link';
 import "./PaginaProyectos.css";
 
 const PaginaProyectos = () => {
   return (
     <>
-      {/* Banner para Kuntur */}
+    <Link href={'/proyectos/kuntur'}>
+      <button className='link-proyecto'>
+          Proyecto kuntur
+      </button>
+    </Link>
+    
 
       {/* Banner para MiSat*/}
     </>
