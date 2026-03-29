@@ -70,3 +70,36 @@ export interface ContentfulBannerResponse {
     Asset?: ContentfulAsset[];
   };
 }
+
+// ===== FIGURA =====
+
+// Tipo que viene de Contentful (con el link al asset)
+export interface ContentfulFiguraFields {
+  nombre: string;
+  media: {
+    sys: {
+      type: string;
+      linkType: string;
+      id: string;
+    };
+  };
+}
+
+// Tipo procesado (con el asset completo resuelto)
+export interface ProcessedFigura {
+  nombre: string;
+  media?: ContentfulAsset;
+}
+
+// Respuesta completa de Contentful para Figura
+export interface ContentfulFiguraResponse {
+  items: Array<{
+    fields: ContentfulFiguraFields;
+    sys: {
+      id: string;
+    };
+  }>;
+  includes?: {
+    Asset?: ContentfulAsset[];
+  };
+}

@@ -1,4 +1,4 @@
-import { ContentfulAsset, ContentfulBannerResponse, ContentfulImage, ProcessedBanner } from "./types/contentful";
+import { ContentfulAsset, ContentfulBannerResponse, ContentfulFiguraResponse, ContentfulImage, ProcessedBanner, ProcessedFigura } from "./types/contentful";
 
 const SPACE_ID = process.env.NEXT_PUBLIC_SPACE_ID || "";
 const ACCESS_TOKEN = process.env.NEXT_PUBLIC_ACCESS_TOKEN || "";
@@ -88,6 +88,50 @@ export const getBannerByNombre = async (nombre: string): Promise<ProcessedBanner
     return null;
   } catch (error) {
     console.error('Error fetching banner:', error);
+    return null;
+  }
+};
+
+export const getFiguraByNombre = async (nombre: string): Promise<ProcessedFigura | null> => {
+  try {
+    const url = getContentDeliveryURL(
+      'figura', 
+      `fields.nombre=${encodeURIComponent(nombre)}`, 
+      1
+    );
+    
+    const response = await fetch(url, {
+      next: { revalidate: 60 }
+    });
+    
+    if (!response.ok) {
+      throw new Error(`Error fetching figura: ${response.statusText}`);
+    }
+    
+    const data: ContentfulFiguraResponse = await response.json();
+    
+    if (data.items && data.items.length > 0) {
+      const figuraFields = data.items[0].fields;
+      
+      const processedFigura: ProcessedFigura = {
+        nombre: figuraFields.nombre,
+      };
+      
+      // Buscar el asset en includes si existe
+      if (figuraFields.media && data.includes?.Asset) {
+        const assetId = figuraFields.media.sys.id;
+        const asset = data.includes.Asset.find(a => a.sys.id === assetId);
+        if (asset) {
+          processedFigura.media = asset;
+        }
+      }
+      
+      return processedFigura;
+    }
+    
+    return null;
+  } catch (error) {
+    console.error('Error fetching figura:', error);
     return null;
   }
 };
