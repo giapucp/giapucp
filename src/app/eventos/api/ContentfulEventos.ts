@@ -1,3 +1,4 @@
+"use server"
 /* eslint-disable */
 import { getContentDeliveryURL } from "../../../api/ContentfulBase";
 import { Evento } from "../../types/types";

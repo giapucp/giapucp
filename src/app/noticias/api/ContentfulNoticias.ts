@@ -1,3 +1,4 @@
+"use server"
 // api/ContentfulNoticias.ts
 /* eslint-disable */
 import { getContentDeliveryURL } from "../../../api/ContentfulBase";

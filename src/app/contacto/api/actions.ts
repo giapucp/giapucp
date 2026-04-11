@@ -2,7 +2,7 @@
 
 export const addToMailingList = async (formData: FormData) => {
 
-    const GOOGLE_SCRIPT_URL = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL || "";
+    const GOOGLE_SCRIPT_URL = process.env.GOOGLE_SCRIPT_URL || "";
 
     const nombreCompleto = formData.get("nombreCompleto");
     const telefono = formData.get("telefono");

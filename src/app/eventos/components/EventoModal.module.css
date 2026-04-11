@@ -533,13 +533,13 @@
   }
 
   .modal {
-    max-height: 100vh;
-    border-radius: 0;
+    max-height: 95vh;
+    border-radius: 12px;
   }
 
   .headerImage {
     height: 180px;
-    border-radius: 0;
+    border-radius: 12px 12px 0 0;
   }
 
   .modalBody {

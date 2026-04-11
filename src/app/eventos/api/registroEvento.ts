@@ -1,5 +1,6 @@
-const GOOGLE_SCRIPT_URL = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_EVENTOS_URL || "";
+"use server"
 
+const GOOGLE_SCRIPT_URL = process.env.GOOGLE_SCRIPT_EVENTOS_URL || "";
 export interface RegistroEventoData {
   nombre: string;
   apellido: string;
@@ -14,7 +15,7 @@ export interface RegistroResponse {
 
 export async function registrarAsistente(data: RegistroEventoData): Promise<RegistroResponse> {
   if (!GOOGLE_SCRIPT_URL) {
-    console.error("NEXT_PUBLIC_GOOGLE_SCRIPT_EVENTOS_URL no está configurada");
+    console.error("GOOGLE_SCRIPT_EVENTOS_URL no está configurada");
     return {
       success: false,
       message: "Error de configuración del servidor. Contacta al administrador.",

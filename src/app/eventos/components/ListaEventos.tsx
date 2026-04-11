@@ -86,65 +86,67 @@ export default function ListaEventos() {
 
   return (
     <div className={styles.container}>
-      {/* Filtros */}
-      <div className={styles.header}>
-        <div className={styles.filterGroup}>
-          <button
-            className={`${styles.filterBtn} ${filter === "todos" ? styles.filterBtnActive : ""}`}
-            onClick={() => setFilter("todos")}
-            id="filter-todos"
-          >
-            Todos
-          </button>
-          <button
-            className={`${styles.filterBtn} ${filter === "proximos" ? styles.filterBtnActive : ""}`}
-            onClick={() => setFilter("proximos")}
-            id="filter-proximos"
-          >
-            Próximos
-          </button>
-          <button
-            className={`${styles.filterBtn} ${filter === "pasados" ? styles.filterBtnActive : ""}`}
-            onClick={() => setFilter("pasados")}
-            id="filter-pasados"
-          >
-            Pasados
-          </button>
-        </div>
-      </div>
-
-      {/* Grid de eventos */}
-      <div className={styles.eventsGrid}>
-        {sortedEventos.length === 0 ? (
-          <div className={styles.emptyState}>
-            <span className={styles.emptyIcon}>🗓️</span>
-            <h3 className={styles.emptyTitle}>No hay eventos</h3>
-            <p className={styles.emptyText}>
-              {filter === "proximos"
-                ? "No hay eventos próximos por el momento."
-                : filter === "pasados"
-                  ? "No hay eventos pasados registrados."
-                  : "No hay eventos disponibles en este momento."}
-            </p>
+      <div className={styles.innerWrapper}>
+        {/* Filtros */}
+        <div className={styles.header}>
+          <div className={styles.filterGroup}>
+            <button
+              className={`${styles.filterBtn} ${filter === "todos" ? styles.filterBtnActive : ""}`}
+              onClick={() => setFilter("todos")}
+              id="filter-todos"
+            >
+              Todos
+            </button>
+            <button
+              className={`${styles.filterBtn} ${filter === "proximos" ? styles.filterBtnActive : ""}`}
+              onClick={() => setFilter("proximos")}
+              id="filter-proximos"
+            >
+              Próximos
+            </button>
+            <button
+              className={`${styles.filterBtn} ${filter === "pasados" ? styles.filterBtnActive : ""}`}
+              onClick={() => setFilter("pasados")}
+              id="filter-pasados"
+            >
+              Pasados
+            </button>
           </div>
-        ) : (
-          sortedEventos.map((evento) => (
-            <EventoCard
-              key={evento.id}
-              evento={evento}
-              onClick={setSelectedEvento}
-            />
-          ))
+        </div>
+
+        {/* Grid de eventos */}
+        <div className={styles.eventsGrid}>
+          {sortedEventos.length === 0 ? (
+            <div className={styles.emptyState}>
+              <span className={styles.emptyIcon}>🗓️</span>
+              <h3 className={styles.emptyTitle}>No hay eventos</h3>
+              <p className={styles.emptyText}>
+                {filter === "proximos"
+                  ? "No hay eventos próximos por el momento."
+                  : filter === "pasados"
+                    ? "No hay eventos pasados registrados."
+                    : "No hay eventos disponibles en este momento."}
+              </p>
+            </div>
+          ) : (
+            sortedEventos.map((evento) => (
+              <EventoCard
+                key={evento.id}
+                evento={evento}
+                onClick={setSelectedEvento}
+              />
+            ))
+          )}
+        </div>
+
+        {/* Modal */}
+        {selectedEvento && (
+          <EventoModal
+            evento={selectedEvento}
+            onClose={() => setSelectedEvento(null)}
+          />
         )}
       </div>
-
-      {/* Modal */}
-      {selectedEvento && (
-        <EventoModal
-          evento={selectedEvento}
-          onClose={() => setSelectedEvento(null)}
-        />
-      )}
     </div>
   );
 }

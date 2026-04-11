@@ -1,7 +1,7 @@
 import { ContentfulAsset, ContentfulBannerResponse, ContentfulImage, ProcessedBanner } from "./types/contentful";
 
-const SPACE_ID = process.env.NEXT_PUBLIC_SPACE_ID || "";
-const ACCESS_TOKEN = process.env.NEXT_PUBLIC_ACCESS_TOKEN || "";
+const SPACE_ID = process.env.SPACE_ID || "";
+const ACCESS_TOKEN = process.env.ACCESS_TOKEN || "";
 const CONTENTFUL_CDA_HOST = "https://cdn.contentful.com";
 const DEFAULT_ENVIRONMENT = "master";
 
@@ -10,10 +10,10 @@ const DEFAULT_ENVIRONMENT = "master";
 
 const getBaseURL = (): string => {
   if (!SPACE_ID) {
-    throw new Error("Missing NEXT_PUBLIC_CONTENTFUL_SPACE_ID. Check your .env file.");
+    throw new Error("Missing SPACE_ID. Check your .env file.");
   }
   if (!ACCESS_TOKEN) {
-    throw new Error("Missing NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN. Check your .env file.");
+    throw new Error("Missing ACCESS_TOKEN. Check your .env file.");
   }
   return `${CONTENTFUL_CDA_HOST}/spaces/${SPACE_ID}/environments/${DEFAULT_ENVIRONMENT}`;
 };
