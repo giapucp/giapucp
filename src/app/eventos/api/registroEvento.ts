@@ -25,7 +25,6 @@ export async function registrarAsistente(data: RegistroEventoData): Promise<Regi
   try {
     const response = await fetch(GOOGLE_SCRIPT_URL, {
       method: "POST",
-      mode: "no-cors",
       headers: {
         "Content-Type": "application/json",
       },
@@ -36,9 +35,13 @@ export async function registrarAsistente(data: RegistroEventoData): Promise<Regi
         eventoNombre: data.eventoNombre,
       }),
     });
+    
+    // Ensure the response body is consumed to prevent Node.js fetch from hanging
+    // due to unconsumed streams, which can block the server action.
+    await response.text();
 
-    // Con mode: "no-cors" no podemos leer la respuesta,
-    // pero si no hubo excepción, asumimos éxito
+    // Remove mode: 'no-cors' so it behaves like the contact action
+    // and doesn't hang the Next.js server action
     return {
       success: true,
       message: "¡Registro exitoso! Te esperamos en el evento.",
