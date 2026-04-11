@@ -1,0 +1,152 @@
+/* ===== CONTENEDOR ===== */
+.container {
+  width: 100%;
+  background: #111111;
+  padding: 4rem 5vw 5rem;
+}
+
+/* ===== HEADER ===== */
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 3rem;
+}
+
+.titleWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sectionTitle {
+  font-size: clamp(2rem, 5vw, 4rem);
+  color: white;
+  font-weight: bold;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.sectionSubtitle {
+  font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+  color: #777;
+  margin: 0;
+  font-weight: 400;
+}
+
+.viewAllLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #00548c;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.6rem 1.5rem;
+  border: 1.5px solid rgba(0, 84, 140, 0.4);
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.viewAllLink:hover {
+  background: rgba(0, 84, 140, 0.1);
+  border-color: #00548c;
+  transform: translateX(4px);
+}
+
+.viewAllArrow {
+  transition: transform 0.3s ease;
+  font-size: 1.1rem;
+}
+
+.viewAllLink:hover .viewAllArrow {
+  transform: translateX(4px);
+}
+
+/* ===== GRID DE EVENTOS ===== */
+.eventsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+/* ===== ESTADOS ===== */
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  gap: 1.5rem;
+  color: #888;
+}
+
+.loadingSpinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #222;
+  border-top-color: #00548c;
+  border-radius: 50%;
+  animation: spinHome 1s linear infinite;
+}
+
+@keyframes spinHome {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.emptyContainer {
+  text-align: center;
+  padding: 3rem 2rem;
+  color: #666;
+}
+
+.emptyIcon {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+  display: block;
+  opacity: 0.4;
+}
+
+.emptyText {
+  font-size: 0.95rem;
+  color: #666;
+  margin: 0;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .container {
+    padding: 3rem 1.5rem 4rem;
+  }
+
+  .sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .eventsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 2.5rem 1rem 3rem;
+  }
+
+  .viewAllLink {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1600px) {
+  .container {
+    padding: 5rem 10vw;
+  }
+}

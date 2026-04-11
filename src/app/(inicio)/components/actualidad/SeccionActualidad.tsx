@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import { fetchNoticiasRecientes } from "../../api/ContentfulInicio";
 import { Noticia } from "../../../types/types";
 import styles from "./SeccionActualidad.module.css";
@@ -45,7 +46,7 @@ export default function SeccionActualidad() {
 
   const getDescripcion = (noticia: Noticia): string => {
     if (noticia.subtitulo) {
-      return noticia.subtitulo.length > 200 
+      return noticia.subtitulo.length > 200
         ? noticia.subtitulo.substring(0, 200) + "..."
         : noticia.subtitulo;
     }
@@ -79,7 +80,7 @@ export default function SeccionActualidad() {
     return (
       <div className={styles.errorContainer}>
         <p>{error}</p>
-        <button 
+        <button
           className={styles.retryButton}
           onClick={() => window.location.reload()}
         >
@@ -102,12 +103,18 @@ export default function SeccionActualidad() {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.titleRecent}>Actualidad</h2>
+      <div className={styles.sectionHeader}>
+        <h2 className={styles.titleRecent}>Actualidad</h2>
+        <Link href="/noticias" className={styles.viewAllLink}>
+          Ver más
+          <span className={styles.viewAllArrow}>→</span>
+        </Link>
+      </div>
 
       <div className={styles.mainLayout}>
         {/* Columna principal - Noticia destacada */}
         <div className={styles.featuredColumn}>
-          <div 
+          <div
             className={styles.featuredImage}
             style={{
               backgroundImage: `url(${currentNews.portada || "/placeholder-noticia.jpg"})`
@@ -131,9 +138,8 @@ export default function SeccionActualidad() {
             return (
               <div
                 key={noticia.id}
-                className={`${styles.oldNewsCard} ${
-                  originalIndex === currentIndex ? styles.active : ""
-                }`}
+                className={`${styles.oldNewsCard} ${originalIndex === currentIndex ? styles.active : ""
+                  }`}
                 onClick={() => handleSelectNews(originalIndex)}
                 role="button"
                 tabIndex={0}
@@ -143,7 +149,7 @@ export default function SeccionActualidad() {
                   }
                 }}
               >
-                <div 
+                <div
                   className={styles.oldNewsImage}
                   style={{
                     backgroundImage: `url(${noticia.portada || "/placeholder-noticia.jpg"})`

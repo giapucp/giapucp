@@ -1,0 +1,552 @@
+/* ===== OVERLAY ===== */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  animation: overlayFadeIn 0.3s ease;
+}
+
+@keyframes overlayFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ===== MODAL ===== */
+.modal {
+  background: #161616;
+  border-radius: 20px;
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(0, 84, 140, 0.1);
+  animation: modalSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Scrollbar personalizada */
+.modal::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+.modal::-webkit-scrollbar-thumb {
+  background: #00548c;
+  border-radius: 10px;
+}
+
+/* ===== CLOSE BUTTON ===== */
+.closeBtn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  color: white;
+  font-size: 1.3rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.closeBtn:hover {
+  background: rgba(200, 50, 50, 0.8);
+  transform: rotate(90deg);
+}
+
+/* ===== HEADER IMAGE ===== */
+.headerImage {
+  width: 100%;
+  height: 280px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px 20px 0 0;
+}
+
+.headerImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.headerOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60%;
+  background: linear-gradient(to top, #161616 0%, transparent 100%);
+}
+
+.headerBadge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 8px 18px;
+  border-radius: 25px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  backdrop-filter: blur(10px);
+}
+
+.headerBadgeActive {
+  background: linear-gradient(135deg, rgba(0, 200, 83, 0.9), rgba(0, 150, 60, 0.9));
+  color: white;
+  box-shadow: 0 4px 15px rgba(0, 200, 83, 0.3);
+}
+
+.headerBadgeInactive {
+  background: rgba(100, 100, 100, 0.8);
+  color: #ccc;
+}
+
+/* ===== BODY ===== */
+.modalBody {
+  padding: 0 2.5rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ===== EVENT INFO ===== */
+.eventInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.eventTitle {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.metaGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.metaCard {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: border-color 0.2s ease;
+}
+
+.metaCard:hover {
+  border-color: rgba(0, 84, 140, 0.4);
+}
+
+.metaCardIcon {
+  font-size: 1.5rem;
+  width: 42px;
+  height: 42px;
+  background: rgba(0, 84, 140, 0.15);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.metaCardInfo {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.metaCardLabel {
+  font-size: 0.7rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-weight: 600;
+}
+
+.metaCardValue {
+  font-size: 0.9rem;
+  color: #e0e0e0;
+  font-weight: 500;
+  word-break: break-word;
+}
+
+/* ===== DESCRIPTION ===== */
+.descriptionSection {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 1.5rem;
+}
+
+.descriptionTitle {
+  font-size: 0.85rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+}
+
+.descriptionContent {
+  color: #ccc;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* Override RichTextRenderer styles inside modal */
+.descriptionContent p {
+  color: #ccc !important;
+}
+
+.descriptionContent h1,
+.descriptionContent h2,
+.descriptionContent h3,
+.descriptionContent h4 {
+  color: #fff !important;
+}
+
+/* ===== DIVIDER ===== */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(0, 84, 140, 0.4),
+    transparent
+  );
+  margin: 0.5rem 0;
+}
+
+/* ===== REGISTRATION FORM ===== */
+.formSection {
+  background: rgba(0, 84, 140, 0.06);
+  border: 1px solid rgba(0, 84, 140, 0.15);
+  border-radius: 16px;
+  padding: 2rem;
+}
+
+.formTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.25rem 0;
+}
+
+.formSubtitle {
+  font-size: 0.85rem;
+  color: #888;
+  margin: 0 0 1.5rem 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.inputLabel {
+  font-size: 0.8rem;
+  color: #999;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-family: var(--font-primary);
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.input::placeholder {
+  color: #555;
+}
+
+.input:focus {
+  border-color: #00548c;
+  box-shadow: 0 0 0 3px rgba(0, 84, 140, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.inputRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.submitBtn {
+  width: 100%;
+  padding: 0.9rem 2rem;
+  background: linear-gradient(135deg, #00548c, #0077cc);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  margin-top: 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.submitBtn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.submitBtn:hover::before {
+  left: 100%;
+}
+
+.submitBtn:hover {
+  background: linear-gradient(135deg, #0077cc, #0099ff);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 84, 140, 0.4);
+}
+
+.submitBtn:disabled {
+  background: #333;
+  color: #666;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.submitBtn:disabled::before {
+  display: none;
+}
+
+/* ===== LOADING SPINNER ===== */
+.btnLoading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===== SUCCESS MESSAGE ===== */
+.successMessage {
+  text-align: center;
+  padding: 2rem 1rem;
+  animation: successFadeIn 0.5s ease;
+}
+
+@keyframes successFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.successIcon {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  display: block;
+  animation: successBounce 0.6s ease;
+}
+
+@keyframes successBounce {
+  0% { transform: scale(0); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.successTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #00c853;
+  margin: 0 0 0.5rem 0;
+}
+
+.successText {
+  font-size: 0.9rem;
+  color: #999;
+  margin: 0;
+}
+
+/* ===== ERROR MESSAGE ===== */
+.errorMessage {
+  background: rgba(200, 50, 50, 0.1);
+  border: 1px solid rgba(200, 50, 50, 0.3);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  color: #ff6b6b;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/* ===== ENDED EVENT ===== */
+.endedMessage {
+  text-align: center;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.endedIcon {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+  display: block;
+  opacity: 0.6;
+}
+
+.endedTitle {
+  font-size: 1.1rem;
+  color: #888;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+}
+
+.endedText {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .overlay {
+    padding: 1rem;
+    align-items: flex-end;
+  }
+
+  .modal {
+    max-height: 95vh;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .headerImage {
+    height: 200px;
+  }
+
+  .modalBody {
+    padding: 0 1.5rem 2rem;
+  }
+
+  .eventTitle {
+    font-size: 1.4rem;
+  }
+
+  .metaGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .inputRow {
+    grid-template-columns: 1fr;
+  }
+
+  .formSection {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .overlay {
+    padding: 0;
+  }
+
+  .modal {
+    max-height: 100vh;
+    border-radius: 0;
+  }
+
+  .headerImage {
+    height: 180px;
+    border-radius: 0;
+  }
+
+  .modalBody {
+    padding: 0 1rem 1.5rem;
+  }
+
+  .formSection {
+    padding: 1.25rem;
+  }
+}

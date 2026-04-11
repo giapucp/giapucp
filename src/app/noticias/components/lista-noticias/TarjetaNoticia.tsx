@@ -41,39 +41,59 @@ const extractPlainText = (content: any): string => {
 const TarjetaNoticia: React.FC<TarjetaNoticiaProps> = ({ noticia, onClick }) => {
   const descripcion = noticia.subtitulo || extractPlainText(noticia.contenido);
 
+  const formatDate = (dateString?: string) => {
+    if (!dateString) return "Fecha no disponible";
+    try {
+      const date = new Date(dateString);
+      return new Intl.DateTimeFormat('es-PE', {
+        day: '2-digit',
+        month: 'long',
+        year: 'numeric'
+      }).format(date);
+    } catch {
+      return "Fecha no disponible";
+    }
+  };
+
   return (
     <div
-      className="tarjeta-noticia cursor-pointer"
+      className="tarjeta-noticia"
       onClick={onClick}
-      tabIndex={0}
       role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") onClick();
+      }}
     >
-      <Image
-        src={noticia.portada || "/placeholder.jpg"}
-        alt={noticia.titulo || "Noticia"}
-        width={500}
-        height={300}
-        unoptimized={true}
-        className="tarjeta-noticia-image"
-        loading="lazy"
-      />
+      <div className="imageWrapper">
+        <Image
+          src={noticia.portada || "/placeholder.jpg"}
+          alt={noticia.titulo || "Noticia"}
+          width={500}
+          height={300}
+          unoptimized={true}
+          className="tarjeta-noticia-image"
+          loading="lazy"
+        />
+      </div>
 
       <div className="tarjeta-noticia-info">
         <h2 className="tarjeta-noticia-title">{noticia.titulo}</h2>
         
         {descripcion && (
           <p className="tarjeta-noticia-subtitle">
-            {descripcion.length > 100
-              ? descripcion.substring(0, 100) + "..."
+            {descripcion.length > 120
+              ? descripcion.substring(0, 120) + "..."
               : descripcion}
           </p>
         )}
         
-        <p className="tarjeta-noticia-date">
-          {noticia.fechaPublicacion 
-            ? new Date(noticia.fechaPublicacion).toLocaleDateString('es-ES')
-            : "Fecha no disponible"}
-        </p>  
+        <div className="tarjeta-noticia-meta">
+          <span className="metaIcon">📅</span>
+          <p className="tarjeta-noticia-date">
+            {formatDate(noticia.fechaPublicacion)}
+          </p>  
+        </div>
       </div>
     </div>
   );

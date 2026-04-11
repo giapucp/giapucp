@@ -103,77 +103,79 @@ const PaginaEquipo = () => {
   return (
     <>
       <div className="pagina-directorio-container" ref={pageContainerRef}>
-  
+        <div className="pagina-directorio-inner">
 
-        <div className="directorio-filtros">
-          <select value={selectedArea} onChange={(e) => setSelectedArea(e.target.value)}>
-            {areaOptions.map((area) => (
-              <option key={area} value={area}>
-                {area}
-              </option>
-            ))}
-          </select>
-          <input
-            type="text"
-            placeholder="Buscar por nombre o apellido"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-        </div>
+          <div className="directorio-filtros">
+            <select value={selectedArea} onChange={(e) => setSelectedArea(e.target.value)}>
+              {areaOptions.map((area) => (
+                <option key={area} value={area}>
+                  {area}
+                </option>
+              ))}
+            </select>
+            <input
+              type="text"
+              placeholder="Buscar por nombre o apellido"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
 
-        {presidente && (
-          <section className="directorio-seccion presidente-seccion">
-            <h3>{presidente.area.nombre}</h3>
-            <div className="miembros-grid">
-              <MiembroCard
-                key={presidente.id}
-                nombre={presidente.nombres}
-                apellido={presidente.apellidopaterno}
-                imagenSrc={presidente.foto}
-                cargo={presidente.cargo}
-              />
-            </div>
-          </section>
-        )}
-
-        {Object.entries(areas).map(([nombreArea, miembrosDelArea]) => (
-          <section key={nombreArea} className="directorio-seccion">
-            <div className="directorio-seccion-header" onClick={() => toggleArea(nombreArea)}>
-              <h3>{nombreArea}</h3>
-              <button
-                className={`toggle-button ${expandedAreas[nombreArea] ? "expanded" : ""}`}
-                aria-expanded={expandedAreas[nombreArea]}
-              >
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path
-                    d="M7 8l3 3 3-3"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
-            </div>
-            {expandedAreas[nombreArea] && (
+          {presidente && (
+            <section className="directorio-seccion presidente-seccion">
+              <h3>{presidente.area.nombre}</h3>
               <div className="miembros-grid">
-                {miembrosDelArea.map((miembro) => (
-                  <MiembroCard
-                    key={miembro.id}
-                    nombre={miembro.nombres}
-                    apellido={miembro.apellidopaterno}
-                    imagenSrc={miembro.foto}
-                    cargo={miembro.cargo}
-                  />
-                ))}
+                <MiembroCard
+                  key={presidente.id}
+                  nombre={presidente.nombres}
+                  apellido={presidente.apellidopaterno}
+                  imagenSrc={presidente.foto}
+                  cargo={presidente.cargo}
+                />
               </div>
-            )}
-          </section>
-        ))}
+            </section>
+          )}
 
-        {miembrosFiltrados.length === 0 && (
-          <div className="no-results">No se encontraron miembros que coincidan con los filtros.</div>
-        )}
+          {Object.entries(areas).map(([nombreArea, miembrosDelArea]) => (
+            <section key={nombreArea} className="directorio-seccion">
+              <div className="directorio-seccion-header" onClick={() => toggleArea(nombreArea)}>
+                <h3>{nombreArea}</h3>
+                <button
+                  className={`toggle-button ${expandedAreas[nombreArea] ? "expanded" : ""}`}
+                  aria-expanded={expandedAreas[nombreArea]}
+                >
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path
+                      d="M7 8l3 3 3-3"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+              {expandedAreas[nombreArea] && (
+                <div className="miembros-grid">
+                  {miembrosDelArea.map((miembro) => (
+                    <MiembroCard
+                      key={miembro.id}
+                      nombre={miembro.nombres}
+                      apellido={miembro.apellidopaterno}
+                      imagenSrc={miembro.foto}
+                      cargo={miembro.cargo}
+                    />
+                  ))}
+                </div>
+              )}
+            </section>
+          ))}
+
+          {miembrosFiltrados.length === 0 && (
+            <div className="no-results">No se encontraron miembros que coincidan con los filtros.</div>
+          )}
+
+        </div>
       </div>
     </>
   )

@@ -11,14 +11,51 @@
   gap: 3rem;
 }
 
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
 /* Título de la sección */
 .titleRecent {
-  font-size: clamp(2rem, 5vw, 5rem);
+  font-size: clamp(2rem, 5vw, 4rem);
   color: white;
   font-weight: bold;
   margin: 0;
+  line-height: 1.1;
   position: relative;
   display: inline-block;
+}
+
+.viewAllLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #00548c;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.6rem 1.5rem;
+  border: 1.5px solid rgba(0, 84, 140, 0.4);
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.viewAllLink:hover {
+  background: rgba(0, 84, 140, 0.1);
+  border-color: #00548c;
+  transform: translateX(4px);
+}
+
+.viewAllArrow {
+  transition: transform 0.3s ease;
+  font-size: 1.1rem;
+}
+
+.viewAllLink:hover .viewAllArrow {
+  transform: translateX(4px);
 }
 
 /* Layout principal: dos columnas */

@@ -1,0 +1,169 @@
+/* ===== CONTENEDOR PRINCIPAL ===== */
+.container {
+  width: 100%;
+  min-height: 60vh;
+  background: #0d0d0d;
+  padding: 3rem 5vw 4rem;
+}
+
+/* ===== HEADER ===== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+
+.filterGroup {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.filterBtn {
+  padding: 0.5rem 1.25rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+  color: #999;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--font-primary);
+}
+
+.filterBtn:hover {
+  border-color: rgba(0, 84, 140, 0.4);
+  color: #ccc;
+}
+
+.filterBtnActive {
+  background: #00548c;
+  border-color: #00548c;
+  color: white;
+}
+
+/* ===== GRID DE EVENTOS ===== */
+.eventsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+/* ===== EMPTY STATE ===== */
+.emptyState {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.emptyIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+  opacity: 0.4;
+}
+
+.emptyTitle {
+  font-size: 1.2rem;
+  color: #666;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+}
+
+.emptyText {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0;
+}
+
+/* ===== LOADING ===== */
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 40vh;
+  gap: 1.5rem;
+  color: #888;
+}
+
+.loadingSpinner {
+  width: 45px;
+  height: 45px;
+  border: 3px solid #222;
+  border-top-color: #00548c;
+  border-radius: 50%;
+  animation: spinLoader 1s linear infinite;
+}
+
+@keyframes spinLoader {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===== ERROR ===== */
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 40vh;
+  gap: 1rem;
+  color: #888;
+  text-align: center;
+}
+
+.retryButton {
+  padding: 0.7rem 2rem;
+  background: #00548c;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.retryButton:hover {
+  background: #0077cc;
+  transform: translateY(-2px);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .eventsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 2rem 1.5rem 3rem;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .eventsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1.5rem 1rem 2.5rem;
+  }
+
+  .filterBtn {
+    padding: 0.4rem 1rem;
+    font-size: 0.75rem;
+  }
+}

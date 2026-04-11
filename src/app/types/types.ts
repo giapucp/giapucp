@@ -124,3 +124,65 @@ export interface ContentfulMiembroResponse {
     }>;
   };
 }
+
+// ===== EVENTOS =====
+
+export interface EventoFields {
+  title: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  description: any; // RichText de Contentful
+  date: string;
+  location?: string;
+  organizer?: string;
+  attendees?: Array<{
+    sys: {
+      id: string;
+      linkType: string;
+      type: string;
+    };
+  }>;
+  image?: ContentfulImage;
+}
+
+export interface Evento {
+  id: string;
+  title: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  description: any; // RichText de Contentful
+  date: string;
+  location?: string;
+  organizer?: string;
+  image: string;
+  isActive: boolean;
+}
+
+export interface ContentfulEventoResponse {
+  items: Array<{
+    sys: {
+      id: string;
+    };
+    fields: EventoFields;
+  }>;
+  includes?: {
+    Entry?: Array<{
+      sys: {
+        id: string;
+        type: string;
+        contentType?: {
+          sys: {
+            id: string;
+          };
+        };
+      };
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      fields: any;
+    }>;
+    Asset?: Array<{
+      sys: {
+        id: string;
+      };
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      fields: any;
+    }>;
+  };
+}

@@ -19,8 +19,8 @@ const MiembroCard: React.FC<MiembroCardProps> = ({ imagenSrc, nombre, apellido, 
           src={imagenSrc || "/placeholder.jpg"}
           alt={`Foto de ${nombre} ${apellido}`}
           className="miembro-imagen"
-          width={100}
-          height={100}
+          width={200}
+          height={200}
           onError={(e) => {
             e.currentTarget.src = "/placeholder.jpg"
           }}
