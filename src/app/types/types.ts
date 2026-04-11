@@ -57,6 +57,11 @@ export interface AreaFields {
   nombre: string;
 }
 
+export interface Area {
+  id: string;
+  nombre: string;
+}
+
 export interface CargoFields {
   nombre: string;
 }

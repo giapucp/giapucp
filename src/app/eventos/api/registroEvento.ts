@@ -5,6 +5,7 @@ export interface RegistroEventoData {
   nombre: string;
   apellido: string;
   fechaNacimiento: string;
+  area: string;
   eventoNombre: string;
 }
 
@@ -32,6 +33,7 @@ export async function registrarAsistente(data: RegistroEventoData): Promise<Regi
         nombre: data.nombre,
         apellido: data.apellido,
         fechaNacimiento: data.fechaNacimiento,
+        area: data.area,
         eventoNombre: data.eventoNombre,
       }),
     });

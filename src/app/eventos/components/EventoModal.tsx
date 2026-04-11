@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Evento } from "../../types/types";
+import { Evento, Area } from "../../types/types";
 import { registrarAsistente } from "../api/registroEvento";
+import { fetchAreas } from "../api/ContentfulEventos";
 import RichTextRenderer from "@/components/comun/RichTextRenderer";
 import styles from "./EventoModal.module.css";
 
@@ -15,9 +16,28 @@ export default function EventoModal({ evento, onClose }: EventoModalProps) {
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
   const [fechaNacimiento, setFechaNacimiento] = useState("");
+  const [area, setArea] = useState("");
+  const [areas, setAreas] = useState<Area[]>([]);
+  const [loadingAreas, setLoadingAreas] = useState(true);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // Cargar áreas
+  useEffect(() => {
+    const loadAreas = async () => {
+      try {
+        setLoadingAreas(true);
+        const data = await fetchAreas();
+        setAreas(data);
+      } catch (err) {
+        console.error("Error cargando áreas:", err);
+      } finally {
+        setLoadingAreas(false);
+      }
+    };
+    loadAreas();
+  }, []);
 
   // Cerrar con Escape
   useEffect(() => {
@@ -53,7 +73,7 @@ export default function EventoModal({ evento, onClose }: EventoModalProps) {
     e.preventDefault();
     setError(null);
 
-    if (!nombre.trim() || !apellido.trim() || !fechaNacimiento) {
+    if (!nombre.trim() || !apellido.trim() || !fechaNacimiento || !area) {
       setError("Por favor completa todos los campos.");
       return;
     }
@@ -65,6 +85,7 @@ export default function EventoModal({ evento, onClose }: EventoModalProps) {
         nombre: nombre.trim(),
         apellido: apellido.trim(),
         fechaNacimiento,
+        area,
         eventoNombre: evento.title,
       });
 
@@ -244,6 +265,28 @@ export default function EventoModal({ evento, onClose }: EventoModalProps) {
                         onChange={(e) => setFechaNacimiento(e.target.value)}
                         required
                       />
+                    </div>
+
+                    <div className={styles.inputGroup}>
+                      <label className={styles.inputLabel} htmlFor="reg-area">
+                        Área de interés / pertenencia
+                      </label>
+                      <select
+                        id="reg-area"
+                        className={styles.input}
+                        value={area}
+                        onChange={(e) => setArea(e.target.value)}
+                        required
+                      >
+                        <option value="" disabled>
+                          {loadingAreas ? "Cargando áreas..." : "Selecciona un área"}
+                        </option>
+                        {areas.map((a) => (
+                          <option key={a.id} value={a.nombre}>
+                            {a.nombre}
+                          </option>
+                        ))}
+                      </select>
                     </div>
 
                     {error && (

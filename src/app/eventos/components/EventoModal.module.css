@@ -314,6 +314,11 @@
   outline: none;
 }
 
+.input option {
+  color: #000000;
+  background-color: #ffffff;
+}
+
 .input::placeholder {
   color: #555;
 }

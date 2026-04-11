@@ -1,7 +1,7 @@
 "use server"
 /* eslint-disable */
 import { getContentDeliveryURL } from "../../../api/ContentfulBase";
-import { Evento } from "../../types/types";
+import { Evento, Area } from "../../types/types";
 
 // Helper para obtener URLs de assets referenciados
 function getReferencedAssetUrl(assetsMap: Map<string, any>, reference: any): string {
@@ -89,10 +89,34 @@ export async function fetchEventosRecientes(limit = 2): Promise<Evento[]> {
 }
 
 export async function fetchEventoById(id: string): Promise<Evento | null> {
+    try {
+      const response = await fetch(
+        `${getContentDeliveryURL("event", "", 2)}&sys.id=${id}`
+      );
+      
+      if (!response.ok) {
+        throw new Error(`Error HTTP: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      
+      if (data.items.length === 0) {
+        return null;
+      }
+      
+      const eventos = processEventItems(data);
+      return eventos[0] || null;
+      
+    } catch (error) {
+      console.error(`Error fetching evento ${id} from Contentful:`, error);
+      return null;
+    }
+  }
+
+export async function fetchAreas(): Promise<Area[]> {
   try {
-    const response = await fetch(
-      `${getContentDeliveryURL("event", "", 2)}&sys.id=${id}`
-    );
+    const url = getContentDeliveryURL("area", "order=fields.nombre");
+    const response = await fetch(url);
     
     if (!response.ok) {
       throw new Error(`Error HTTP: ${response.status}`);
@@ -100,15 +124,13 @@ export async function fetchEventoById(id: string): Promise<Evento | null> {
     
     const data = await response.json();
     
-    if (data.items.length === 0) {
-      return null;
-    }
-    
-    const eventos = processEventItems(data);
-    return eventos[0] || null;
+    return data.items.map((item: any) => ({
+      id: item.sys.id,
+      nombre: item.fields.nombre || "Sin nombre",
+    }));
     
   } catch (error) {
-    console.error(`Error fetching evento ${id} from Contentful:`, error);
-    return null;
+    console.error("Error fetching areas from Contentful:", error);
+    return [];
   }
 }
