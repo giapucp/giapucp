@@ -1,7 +1,7 @@
 import { ContentfulAsset, ContentfulBannerResponse, ContentfulFiguraResponse, ContentfulImage, ProcessedBanner, ProcessedFigura } from "./types/contentful";
 
-const SPACE_ID = process.env.NEXT_PUBLIC_SPACE_ID || "";
-const ACCESS_TOKEN = process.env.NEXT_PUBLIC_ACCESS_TOKEN || "";
+const SPACE_ID = process.env.SPACE_ID || "";
+const ACCESS_TOKEN = process.env.ACCESS_TOKEN || "";
 const CONTENTFUL_CDA_HOST = "https://cdn.contentful.com";
 const DEFAULT_ENVIRONMENT = "master";
 

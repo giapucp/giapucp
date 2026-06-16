@@ -13,7 +13,7 @@ const MiSat = () => {
         <section className="mb-12 md:mb-16 pb-8 border-b-2 border-gray-200">
           <div className="flex flex-col lg:flex-row lg:items-center gap-4 mb-4">
             <h1 className="text-3xl sm:text-4xl md:text-5xl text-[#002366] font-display font-bold text-center lg:text-left">
-              Misión MISAT-2
+              Misión MISAT
             </h1>
             <div className="flex flex-wrap justify-center lg:justify-start gap-2 lg:mt-2">
               <span className="rounded-xl bg-blue-50 text-[#002366] px-2.5 py-1 text-[10px] sm:text-xs font-bold tracking-wide uppercase border border-blue-200">
@@ -22,18 +22,15 @@ const MiSat = () => {
               <span className="rounded-xl bg-blue-50 text-[#002366] px-2.5 py-1 text-[10px] sm:text-xs font-bold tracking-wide uppercase border border-blue-200">
                 Team GIA - MISAT
               </span>
-              <span className="rounded-xl bg-blue-50 text-[#002366] px-2.5 py-1 text-[10px] sm:text-xs font-bold tracking-wide uppercase border border-blue-200">
-                Ing. Electrónica & Mecatrónica
-              </span>
             </div>
           </div>
           <h2 className="text-lg sm:text-xl text-gray-600 font-primary mb-6 text-center lg:text-left">
             Prototipo PocketQube de Monitoreo Ambiental e Inteligencia Artificial
           </h2>
           <p className="text-base sm:text-lg max-w-4xl mx-auto lg:mx-0 mb-8 text-gray-700 font-primary text-justify lg:text-left">
-            La Misión MISAT-2 nace como respuesta directa a la crisis ambiental que enfrenta la Amazonía: más de 13,000 km² de bosque perdidos solo en Brasil. Nuestro objetivo es validar un sistema satelital compacto, inteligente y autónomo, capaz de detectar incendios forestales desde el aire utilizando visión por computadora, y transmitir datos de monitoreo ambiental en tiempo real hacia una estación terrena. MISAT-2 demuestra que la tecnología espacial puede ser accesible, modular y orientada a resolver problemas reales.
+            La Misión MISAT nace como respuesta directa a la crisis ambiental que enfrenta la Amazonía: más de 13,000 km² de bosque perdidos solo en Brasil. Nuestro objetivo es validar un sistema satelital compacto, inteligente y autónomo, capaz de detectar incendios forestales desde el aire utilizando visión por computadora, y transmitir datos de monitoreo ambiental en tiempo real hacia una estación terrena. MISAT demuestra que la tecnología espacial puede ser accesible, modular y orientada a resolver problemas reales.
           </p>
-          <Figura nombre="render-satelite-completo" alt="Render del satélite MISAT-2 completo" maxAncho="full" />
+          <Figura nombre="render-satelite-completo" alt="Render del satélite MISAT completo" maxAncho="full" />
         </section>
         
         <section className="mb-12 md:mb-16">
@@ -41,7 +38,7 @@ const MiSat = () => {
             Visión General y Capacidades
           </h2>
           <p className="font-primary text-base sm:text-lg mb-6">
-            MISAT-2 es un nanosatélite formato PocketQube 1P diseñado para operar de forma autónoma. Integra sensores ambientales, GPS, una unidad de inteligencia artificial y un sistema de comunicaciones LoRa en un volumen de tan solo 50 × 50 × 114 mm.
+            MISAT es un nanosatélite formato PocketQube 1P diseñado para operar de forma autónoma. Integra sensores ambientales, GPS, una unidad de inteligencia artificial y un sistema de comunicaciones LoRa en un volumen de tan solo 50 × 50 × 114 mm.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 my-8">
@@ -114,7 +111,7 @@ const MiSat = () => {
             </div>
           </div>
 
-          <Figura nombre="diagrama-bloques-pcb" alt="Diagrama de bloques y PCB principal de MISAT-2" caption="Diagrama de bloques del sistema y PCB principal" maxAncho="xl" className="my-8" />
+          <Figura nombre="diagrama-bloques-pcb" alt="Diagrama de bloques y PCB principal de MISAT" caption="Diagrama de bloques del sistema y PCB principal" maxAncho="xl" className="my-8" />
         </section>
 
         
@@ -123,7 +120,7 @@ const MiSat = () => {
             Arquitectura del Sistema
           </h2>
           <p className="font-primary text-base sm:text-lg mb-6">
-            MISAT-2 integra cinco subsistemas especializados en un diseño de 28 piezas que encajan con precisión milimétrica:
+            MISAT integra cinco subsistemas especializados en un diseño de 28 piezas que encajan con precisión milimétrica:
           </p>
 
           <div className="list-disc ml-5 sm:ml-6 space-y-3 sm:space-y-4 font-primary text-sm sm:text-base">
@@ -144,7 +141,7 @@ const MiSat = () => {
             </li>
           </div>
 
-          <Figura nombre="vista-explotada" alt="Vista explotada del satélite MISAT-2" caption="Vista explotada (Exploded View) — integración de los 5 subsistemas" maxAncho="full" className="my-8" />
+          <Figura nombre="vista-explotada" alt="Vista explotada del satélite MISAT" caption="Vista explotada (Exploded View) — integración de los 5 subsistemas" maxAncho="full" className="my-8" />
           <Figura nombre="diagrama-conexiones" alt="Diagrama de conexiones electrónicas" caption="Diagrama de conexiones electrónicas del sistema" maxAncho="xl" className="my-4" />
         </section>
 
@@ -154,7 +151,7 @@ const MiSat = () => {
             Software y Estación Terrena
           </h2>
           <p className="font-primary text-base sm:text-lg mb-6">
-            Los datos captados por MISAT-2 llegan a tierra a través de un dashboard desarrollado en Python con PyQt6, que centraliza telemetría, posición y alertas de IA en una sola interfaz operativa.
+            Los datos captados por MISAT llegan a tierra a través de un dashboard desarrollado en Python con PyQt6, que centraliza telemetría, posición y alertas de IA en una sola interfaz operativa.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 my-8">
