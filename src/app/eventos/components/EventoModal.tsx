@@ -338,9 +338,12 @@ export default function EventoModal({ evento, onClose }: EventoModalProps) {
             </div>
           ) : (
             <div className={styles.endedMessage}>
-              <span className={styles.endedIcon}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-              </span>
+              <div style={{ display: "flex", justifyContent: "center", width: "100%", marginBottom: "16px" }}>
+                <span className={styles.endedIcon} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline></svg>
+                </span>
+              </div>
               <h3 className={styles.endedTitle}>Evento finalizado</h3>
               <p className={styles.endedText}>
                 Este evento ya se realizó. Mantente atento a próximos eventos.
