@@ -51,8 +51,12 @@ export default function EventoModal({ evento, onClose }: EventoModalProps) {
     }
   };
 
-  // Variable auxiliar para saber si necesitamos mostrar el campo de texto extra
-  const requiereTextoExtra = institucion === "PUCP" || institucion === "Otro" || institucion === "Empresa/Institución";
+  // 💡 ACTUALIZADO: Ahora "Otra universidad" también requiere campo extra
+  const requiereTextoExtra = 
+    institucion === "PUCP" || 
+    institucion === "Otra universidad" || 
+    institucion === "Otro" || 
+    institucion === "Empresa/Institución";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -63,7 +67,6 @@ export default function EventoModal({ evento, onClose }: EventoModalProps) {
       return;
     }
 
-    // Validación si la opción seleccionada requiere que escriban algo en el campo de texto
     if (requiereTextoExtra && !institucionOtro.trim()) {
       setError("Por favor completa el campo de especificación de tu institución o carrera.");
       return;
@@ -93,13 +96,16 @@ export default function EventoModal({ evento, onClose }: EventoModalProps) {
     }
   };
 
-  // Lógica dinámica para cambiar el título y placeholder del input según lo seleccionado
+  // 💡 ACTUALIZADO: Lógica dinámica de textos ampliada
   let extraLabel = "Especifica tu Institución";
   let extraPlaceholder = "Nombre de tu institución o colegio";
 
   if (institucion === "PUCP") {
     extraLabel = "Especifica tu Carrera";
     extraPlaceholder = "Ej. Ingeniería Mecatrónica, Física, etc.";
+  } else if (institucion === "Otra universidad") {
+    extraLabel = "Especifica tu Universidad y Carrera";
+    extraPlaceholder = "Ej. UNMSM - Ingeniería Electrónica";
   } else if (institucion === "Empresa/Institución") {
     extraLabel = "Especifica tu Empresa / Institución";
     extraPlaceholder = "Nombre de la empresa";
@@ -267,7 +273,7 @@ export default function EventoModal({ evento, onClose }: EventoModalProps) {
                         value={institucion}
                         onChange={(e) => {
                           setInstitucion(e.target.value);
-                          setInstitucionOtro(""); // Limpiamos el input si cambian de opción
+                          setInstitucionOtro(""); // Se limpia inteligentemente al cambiar de opción
                         }}
                         required
                       >
@@ -282,7 +288,7 @@ export default function EventoModal({ evento, onClose }: EventoModalProps) {
                       </select>
                     </div>
 
-                    {/* Input dinámico: Se muestra y cambia de nombre según lo elegido en el Select */}
+                    {/* Input dinámico único para PUCP, Otra Universidad, Empresa u Otro */}
                     {requiereTextoExtra && (
                       <div className={styles.inputGroup}>
                         <label className={styles.inputLabel} htmlFor="reg-institucion-otro">
