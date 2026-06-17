@@ -51,6 +51,9 @@ export default function EventoModal({ evento, onClose }: EventoModalProps) {
     }
   };
 
+  // Variable auxiliar para saber si necesitamos mostrar el campo de texto extra
+  const requiereTextoExtra = institucion === "PUCP" || institucion === "Otro" || institucion === "Empresa/Institución";
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
@@ -60,8 +63,9 @@ export default function EventoModal({ evento, onClose }: EventoModalProps) {
       return;
     }
 
-    if (institucion === "Otro" && !institucionOtro.trim()) {
-      setError("Por favor especifica tu institución.");
+    // Validación si la opción seleccionada requiere que escriban algo en el campo de texto
+    if (requiereTextoExtra && !institucionOtro.trim()) {
+      setError("Por favor completa el campo de especificación de tu institución o carrera.");
       return;
     }
 
@@ -72,7 +76,7 @@ export default function EventoModal({ evento, onClose }: EventoModalProps) {
         nombre: nombreCompleto.trim(),
         correo: correo.trim(),
         institucion,
-        institucionOtro: institucion === "Otro" ? institucionOtro.trim() : "",
+        institucionOtro: requiereTextoExtra ? institucionOtro.trim() : "",
         aceptaPublicidad,
         eventoNombre: evento.title,
       });
@@ -88,6 +92,18 @@ export default function EventoModal({ evento, onClose }: EventoModalProps) {
       setLoading(false);
     }
   };
+
+  // Lógica dinámica para cambiar el título y placeholder del input según lo seleccionado
+  let extraLabel = "Especifica tu Institución";
+  let extraPlaceholder = "Nombre de tu institución o colegio";
+
+  if (institucion === "PUCP") {
+    extraLabel = "Especifica tu Carrera";
+    extraPlaceholder = "Ej. Ingeniería Mecatrónica, Física, etc.";
+  } else if (institucion === "Empresa/Institución") {
+    extraLabel = "Especifica tu Empresa / Institución";
+    extraPlaceholder = "Nombre de la empresa";
+  }
 
   return (
     <div
@@ -189,7 +205,6 @@ export default function EventoModal({ evento, onClose }: EventoModalProps) {
             <div className={styles.formSection}>
               {success ? (
                 <div className={styles.successMessage}>
-                  {/* Contenedor con flexbox para centrar perfectamente el SVG en cualquier resolución */}
                   <div style={{ display: "flex", justifyContent: "center", width: "100%", marginBottom: "16px" }}>
                     <span className={styles.successIcon} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
                       <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -250,7 +265,10 @@ export default function EventoModal({ evento, onClose }: EventoModalProps) {
                         id="reg-institucion"
                         className={styles.input}
                         value={institucion}
-                        onChange={(e) => setInstitucion(e.target.value)}
+                        onChange={(e) => {
+                          setInstitucion(e.target.value);
+                          setInstitucionOtro(""); // Limpiamos el input si cambian de opción
+                        }}
                         required
                       >
                         <option value="" disabled hidden>
@@ -264,16 +282,17 @@ export default function EventoModal({ evento, onClose }: EventoModalProps) {
                       </select>
                     </div>
 
-                    {institucion === "Otro" && (
+                    {/* Input dinámico: Se muestra y cambia de nombre según lo elegido en el Select */}
+                    {requiereTextoExtra && (
                       <div className={styles.inputGroup}>
                         <label className={styles.inputLabel} htmlFor="reg-institucion-otro">
-                          Especifica tu Institución
+                          {extraLabel}
                         </label>
                         <input
                           id="reg-institucion-otro"
                           type="text"
                           className={styles.input}
-                          placeholder="Nombre de tu institución o colegio"
+                          placeholder={extraPlaceholder}
                           value={institucionOtro}
                           onChange={(e) => setInstitucionOtro(e.target.value)}
                           required
@@ -281,7 +300,6 @@ export default function EventoModal({ evento, onClose }: EventoModalProps) {
                       </div>
                     )}
 
-                    {/* Sección Boletín Informativo con textos corregidos a color Blanco */}
                     <div className={styles.inputGroup} style={{ marginTop: "12px" }}>
                       <label className={styles.inputLabel} style={{ marginBottom: "8px", lineHeight: "1.4" }}>
                         ¿Te gustaría recibir información sobre futuros proyectos, eventos y oportunidades del GIA PUCP?
@@ -340,8 +358,10 @@ export default function EventoModal({ evento, onClose }: EventoModalProps) {
             <div className={styles.endedMessage}>
               <div style={{ display: "flex", justifyContent: "center", width: "100%", marginBottom: "16px" }}>
                 <span className={styles.endedIcon} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle>
-                  <polyline points="12 6 12 12 16 14"></polyline></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
                 </span>
               </div>
               <h3 className={styles.endedTitle}>Evento finalizado</h3>
