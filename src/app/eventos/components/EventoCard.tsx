@@ -1,6 +1,8 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
+import { Calendar, MapPin, ArrowRight } from "lucide-react";
 import { Evento } from "../../types/types";
 import styles from "./EventoCard.module.css";
 
@@ -17,8 +19,6 @@ export default function EventoCard({ evento, onClick }: EventoCardProps) {
         day: "2-digit",
         month: "long",
         year: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
       }).format(date);
     } catch {
       return "Fecha no disponible";
@@ -38,14 +38,13 @@ export default function EventoCard({ evento, onClick }: EventoCardProps) {
     >
       {/* Imagen */}
       <div className={styles.imageWrapper}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={evento.image}
+        <Image
+          src={evento.image || "/placeholder.jpg"}
           alt={evento.title}
+          fill
           className={styles.eventImage}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
-        <div className={styles.imageOverlay} />
-
         {/* Badge de estado */}
         <span
           className={`${styles.badge} ${
@@ -58,47 +57,28 @@ export default function EventoCard({ evento, onClick }: EventoCardProps) {
 
       {/* Contenido */}
       <div className={styles.cardContent}>
+        {/* Lugar / Categoría */}
+        <div className={styles.metaRow}>
+          <MapPin size={13} className={styles.metaIcon} aria-hidden="true" />
+          <span className={styles.metaLocation}>
+            {evento.location || "Lima, Perú"}
+          </span>
+        </div>
+
+        {/* Título */}
         <h3 className={styles.eventTitle}>{evento.title}</h3>
 
-        <div className={styles.eventMeta}>
-          {/* Item: Fecha */}
-          <div className={styles.metaItem}>
-            <span className={styles.metaIcon}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ display: "block" }}><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-            </span>
-            <span className={styles.metaText}>{formatDate(evento.date)}</span>
+        {/* Footer con fecha y acción */}
+        <div className={styles.cardFooter}>
+          <div className={styles.eventDate}>
+            <Calendar size={13} className={styles.dateIcon} aria-hidden="true" />
+            <span>{formatDate(evento.date)}</span>
           </div>
-
-          {/* Item: Ubicación */}
-          {evento.location && (
-            <div className={styles.metaItem}>
-              <span className={styles.metaIcon}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ display: "block" }}><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-              </span>
-              <span className={styles.metaText}>{evento.location}</span>
-            </div>
-          )}
-
-          {/* Item: Organizador */}
-          {evento.organizer && (
-            <div className={styles.metaItem}>
-              <span className={styles.metaIcon}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ display: "block" }}><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-              </span>
-              <span className={styles.metaText}>{evento.organizer}</span>
-            </div>
-          )}
-          
+          <span className={styles.detailsCta}>
+            <span>Detalles</span>
+            <ArrowRight size={13} className={styles.detailsArrow} />
+          </span>
         </div>
-      </div>
-
-      {/* Footer */}
-      <div className={styles.cardFooter}>
-        {evento.isActive ? (
-          <button className={styles.registerBtn}>Registrarse</button>
-        ) : (
-          <p className={styles.endedLabel}>Evento finalizado</p>
-        )}
       </div>
     </div>
   );

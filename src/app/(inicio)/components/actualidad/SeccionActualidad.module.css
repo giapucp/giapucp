@@ -4,7 +4,7 @@
 .container {
   width: 100%;
   min-height: 100vh;
-  background: #111111;
+  background: var(--color-deep-space);
   padding: 2rem 5vw;
   display: flex;
   flex-direction: column;
@@ -32,20 +32,20 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  color: #00548c;
+  color: var(--color-accent);
   text-decoration: none;
   font-size: 0.95rem;
   font-weight: 600;
   padding: 0.6rem 1.5rem;
-  border: 1.5px solid rgba(0, 84, 140, 0.4);
+  border: 1.5px solid rgba(28, 41, 107, 0.4);
   border-radius: 30px;
   transition: all 0.3s ease;
   white-space: nowrap;
 }
 
 .viewAllLink:hover {
-  background: rgba(0, 84, 140, 0.1);
-  border-color: #00548c;
+  background: rgba(28, 41, 107, 0.1);
+  border-color: var(--color-accent);
   transform: translateX(4px);
 }
 
@@ -73,7 +73,7 @@
   position: relative;
   border-radius: 20px;
   overflow: hidden;
-  background: #1a1a1a;
+  background: var(--color-dark-space);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
   transition: transform 0.3s ease;
   height: 100%; /* Ocupa el 100% de la altura del mainLayout */
@@ -139,7 +139,7 @@
 }
 
 .category {
-  background: #00548c;
+  background: var(--color-accent);
   color: white;
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
@@ -194,17 +194,17 @@
 }
 
 .secondaryColumn::-webkit-scrollbar-track {
-  background: #2a2a2a;
+  background: #0c1530;
   border-radius: 10px;
 }
 
 .secondaryColumn::-webkit-scrollbar-thumb {
-  background: #00548c;
+  background: var(--color-accent);
   border-radius: 10px;
 }
 
 .secondaryColumn::-webkit-scrollbar-thumb:hover {
-  background: #003d66;
+  background: #121e52;
 }
 
 /* Tarjetas de noticias antiguas */
@@ -212,7 +212,7 @@
   display: grid;
   grid-template-columns: 100px 1fr;
   gap: 1rem;
-  background: #1a1a1a;
+  background: var(--color-dark-space);
   border-radius: 12px;
   overflow: hidden;
   transition: all 0.3s ease;
@@ -224,14 +224,14 @@
 
 .oldNewsCard:hover {
   transform: translateX(5px);
-  border-color: #00548c;
-  background: #222;
+  border-color: var(--color-accent);
+  background: #0c1530;
 }
 
 .oldNewsCard.active {
-  border-color: #00548c;
-  background: #222;
-  box-shadow: 0 0 20px rgba(0, 84, 140, 0.3);
+  border-color: var(--color-accent);
+  background: #0c1530;
+  box-shadow: 0 0 20px rgba(28, 41, 107, 0.3);
 }
 
 .oldNewsImage {
@@ -266,7 +266,7 @@
 }
 
 .oldNewsCategory {
-  color: #00548c;
+  color: var(--color-accent);
   font-size: 0.7rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -301,7 +301,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #111111;
+  background: var(--color-deep-space);
   color: white;
   gap: 1.5rem;
   text-align: center;
@@ -311,8 +311,8 @@
 .loadingSpinner {
   width: 50px;
   height: 50px;
-  border: 3px solid #333;
-  border-top-color: #00548c;
+  border: 3px solid #0c1530;
+  border-top-color: var(--color-accent);
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -325,7 +325,7 @@
 
 .retryButton {
   padding: 0.75rem 2rem;
-  background: #00548c;
+  background: var(--color-accent);
   color: white;
   border: none;
   border-radius: 30px;
@@ -336,9 +336,9 @@
 }
 
 .retryButton:hover {
-  background: #003d66;
+  background: #121e52;
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(0, 84, 140, 0.3);
+  box-shadow: 0 10px 20px rgba(28, 41, 107, 0.3);
 }
 
 /* ===== MEDIA QUERIES ===== */

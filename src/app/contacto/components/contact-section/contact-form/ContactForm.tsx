@@ -53,7 +53,7 @@ export const ContactForm = () => {
                             id="nombreCompleto"
                             name="nombreCompleto" 
                             placeholder="Ej. Juan Pérez" 
-                            className="px-4 py-3 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:border-[#00548c] focus:ring-2 focus:ring-[#00548c]/20 transition-all font-medium"
+                            className="px-4 py-3 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:border-[#1C296B] focus:ring-2 focus:ring-[#1C296B]/20 transition-all font-medium"
                             required 
                         />
                     </div>
@@ -65,7 +65,7 @@ export const ContactForm = () => {
                             id="telefono"
                             name="telefono"
                             placeholder="Ej. 987654321" 
-                            className="px-4 py-3 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:border-[#00548c] focus:ring-2 focus:ring-[#00548c]/20 transition-all font-medium"
+                            className="px-4 py-3 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:border-[#1C296B] focus:ring-2 focus:ring-[#1C296B]/20 transition-all font-medium"
                             required
                         />
                     </div>
@@ -77,7 +77,7 @@ export const ContactForm = () => {
                             id="email"
                             name="email" 
                             placeholder="correo@ejemplo.com" 
-                            className="px-4 py-3 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:border-[#00548c] focus:ring-2 focus:ring-[#00548c]/20 transition-all font-medium"
+                            className="px-4 py-3 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:border-[#1C296B] focus:ring-2 focus:ring-[#1C296B]/20 transition-all font-medium"
                             required 
                         />
                     </div>
@@ -88,7 +88,7 @@ export const ContactForm = () => {
                             defaultValue="" 
                             id="asunto"
                             name="asunto" 
-                            className="px-4 py-3 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:border-[#00548c] focus:ring-2 focus:ring-[#00548c]/20 transition-all font-medium appearance-none cursor-pointer"
+                            className="px-4 py-3 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:border-[#1C296B] focus:ring-2 focus:ring-[#1C296B]/20 transition-all font-medium appearance-none cursor-pointer"
                             required
                         >
                             <option value="" disabled hidden>Escoja una opción</option>
@@ -105,14 +105,14 @@ export const ContactForm = () => {
                             id="mensaje"
                             name="mensaje"
                             placeholder="Escribe tu mensaje aquí..."
-                            className="px-4 py-3 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:border-[#00548c] focus:ring-2 focus:ring-[#00548c]/20 transition-all font-medium resize-none"
+                            className="px-4 py-3 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:border-[#1C296B] focus:ring-2 focus:ring-[#1C296B]/20 transition-all font-medium resize-none"
                             rows={4}
                             required
                         />
                     </div>
                     
                     <button 
-                        className="mt-4 w-full py-4 bg-[#00548c] hover:bg-[#003d66] text-white font-bold rounded-xl shadow-md transition-colors disabled:opacity-70 flex justify-center items-center" 
+                        className="mt-4 w-full py-4 bg-[#1C296B] hover:bg-[#121e52] text-white font-bold rounded-xl shadow-md transition-colors disabled:opacity-70 flex justify-center items-center" 
                         disabled={isPending}
                     >
                         {isPending ? "Enviando mensaje..." : "Enviar Mensaje"}

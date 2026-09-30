@@ -155,7 +155,7 @@
   transform: translateX(-50%);
   width: 80px;
   height: 4px;
-  background: linear-gradient(90deg, #00f2fe, #4facfe);
+  background: linear-gradient(90deg, var(--color-accent-light), var(--color-accent));
   border-radius: 2px;
 }
 
@@ -185,4 +185,101 @@
   .year-group {
     margin-bottom: 3rem;
   }
+}
+
+/* Encabezado de año dentro del grid */
+.noticias-year-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.noticias-year-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 1.15rem;
+  background-color: #ffffff;
+  color: var(--color-accent, #1c296b);
+  border: 1px solid #e5e7eb;
+  border-radius: 9999px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.noticias-year-badge svg {
+  color: var(--color-accent, #1c296b);
+}
+
+.noticias-year-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, #e5e7eb 0%, transparent 100%);
+}
+
+/* Estado vacío cuando ningún resultado coincide con los filtros */
+.noticias-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4.5rem 1.5rem;
+  background-color: #ffffff;
+  border: 1px dashed #d1d5db;
+  border-radius: 1.25rem;
+  margin: 1.5rem 0 3rem 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.noticias-empty-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: #f3f4f6;
+  color: var(--color-accent, #1c296b);
+  margin-bottom: 1.25rem;
+}
+
+.noticias-empty-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.noticias-empty-description {
+  font-size: 0.95rem;
+  color: #6b7280;
+  max-width: 440px;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.noticias-empty-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: 0.75rem;
+  background-color: var(--color-accent, #1c296b);
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(28, 41, 107, 0.2);
+}
+
+.noticias-empty-btn:hover {
+  background-color: #131d4d;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(28, 41, 107, 0.3);
 }

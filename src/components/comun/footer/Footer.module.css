@@ -1,44 +1,206 @@
-@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&display=swap");
-
-@layer base {
-  .font-barlow-condensed {
-    font-family: "Barlow Condensed", sans-serif;
-  }
-}
-
-.footer-col {
-  width: 12rem;
-}
-
-.footer-col h3,
-p {
-  margin-bottom: 1.5rem;
-}
-
-.footer-content {
-  margin-top: 2rem;
-}
-
-.footer-bottom {
-  margin-top: 2.5rem;
-}
-
-.principal-footer-container {
-  background-color: black;
-  color: #e3e3db;
+.footerWrapper {
+  position: relative;
+  background-color: var(--color-deep-space);
+  color: #e2e8f0;
   width: 100%;
-  box-sizing: border-box;
-  min-height: 50vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0.2rem;
+  overflow: hidden;
 }
 
-@media (max-width: 768px) {
-  .footer-container {
-    min-height: 350px;
-    max-height: 350px;
-    padding: 2rem 1rem;
-  }
+/* Ambient glow en base estricta a la paleta GIA: Deep Space (#030723), Accent (#1C296B) y Accent Light (#CEDCF7) */
+.ambientGlow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;
+  height: 380px;
+  background: radial-gradient(ellipse at top,
+      rgba(206, 220, 247, 0.22) 0%,
+      rgba(28, 41, 107, 0.6) 32%,
+      rgba(3, 7, 35, 0.4) 65%,
+      transparent 80%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Borde cósmico superior alineado a los tonos oficiales */
+.topBorderGlow {
+  position: relative;
+  width: 100%;
+  height: 1.5px;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(28, 41, 107, 0.4) 15%,
+      rgba(206, 220, 247, 0.85) 50%,
+      rgba(28, 41, 107, 0.4) 85%,
+      transparent 100%);
+  box-shadow:
+    0 0 15px rgba(206, 220, 247, 0.4),
+    0 0 30px rgba(28, 41, 107, 0.5);
+}
+
+.topBorderGlow::after {
+  content: "";
+  position: absolute;
+  top: -1.5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 320px;
+  height: 3px;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(206, 220, 247, 0.7),
+      #ffffff,
+      rgba(206, 220, 247, 0.7),
+      transparent);
+  filter: blur(1.5px);
+  box-shadow: 0 0 20px rgba(206, 220, 247, 0.6);
+}
+
+/* Logo GIA oficial con resplandor en los tonos de identidad (#CEDCF7 y #1C296B) */
+.logoGlow {
+  filter: drop-shadow(0 0 12px rgba(206, 220, 247, 0.45)) drop-shadow(0 0 28px rgba(28, 41, 107, 0.7));
+  transition: filter 0.35s ease, transform 0.35s ease;
+}
+
+.logoGlow:hover {
+  filter: drop-shadow(0 0 16px rgba(206, 220, 247, 0.7)) drop-shadow(0 0 38px rgba(28, 41, 107, 0.9));
+  transform: scale(1.02);
+}
+
+/* Nav list & links */
+.navList {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0.25rem 0 0 0;
+  list-style: none;
+}
+
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #94a3b8;
+  font-size: 0.9375rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  position: relative;
+  width: fit-content;
+}
+
+.navLink:hover {
+  color: #ffffff;
+  transform: translateX(4px);
+}
+
+.navLinkIndicator {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-accent-light, #cedcf7);
+  box-shadow: 0 0 8px var(--color-accent-light, #cedcf7);
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  transform: scale(0);
+}
+
+.navLink:hover .navLinkIndicator {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Contact item */
+.contactCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  color: #cbd5e1;
+  font-size: 0.9375rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.contactCard:hover {
+  color: #ffffff;
+}
+
+.contactIconBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(206, 220, 247, 0.08);
+  border: 1px solid rgba(206, 220, 247, 0.2);
+  color: var(--color-accent-light, #cedcf7);
+  flex-shrink: 0;
+  transition: all 0.25s ease;
+  box-shadow: 0 0 10px rgba(28, 41, 107, 0.25);
+}
+
+.contactCard:hover .contactIconBox {
+  background: rgba(206, 220, 247, 0.18);
+  border-color: rgba(206, 220, 247, 0.5);
+  color: #ffffff;
+  transform: scale(1.06);
+  box-shadow: 0 0 16px rgba(206, 220, 247, 0.35);
+}
+
+/* Social link buttons */
+.socialBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #e2e8f0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(8px);
+}
+
+.socialBtn:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.socialBtnInstagram:hover {
+  border-color: rgba(228, 64, 95, 0.7);
+  box-shadow: 0 8px 24px -4px rgba(228, 64, 95, 0.55);
+  color: #ffffff;
+}
+
+.socialBtnLinkedin:hover {
+  border-color: rgba(0, 119, 181, 0.7);
+  box-shadow: 0 8px 24px -4px rgba(0, 119, 181, 0.55);
+  color: #ffffff;
+}
+
+/* Back to top button */
+.backToTopBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #94a3b8;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.backToTopBtn:hover {
+  background: rgba(206, 220, 247, 0.14);
+  border-color: rgba(206, 220, 247, 0.4);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(28, 41, 107, 0.45);
 }

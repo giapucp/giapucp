@@ -50,7 +50,6 @@ export async function fetchMiembros(): Promise<Miembro[]> {
       });
     }
     
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return data.items.map((item: any) => {
       const areaNombre = getReferencedEntry(entriesMap, item.fields.area, "área");
       const cargoNombre = getReferencedEntry(entriesMap, item.fields.cargo, "cargo");

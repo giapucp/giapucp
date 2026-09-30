@@ -1,104 +1,283 @@
-.page4 {
-  overflow-x: hidden;
+.lasc-history {
+  --lasc-page-gutter: clamp(1.25rem, 5vw, 4rem);
+  --lasc-ink: var(--color-dark-space, #081021);
+  --lasc-primary: var(--color-accent, #1c296b);
+  --lasc-muted: var(--color-gray-dark, #344054);
+  --lasc-border: var(--color-accent-light, #cedcf7);
   width: 100%;
-  background-color: white;
-  flex-grow: 1;
+  padding: clamp(3.5rem, 7vw, 6rem) var(--lasc-page-gutter);
+  background: var(--color-white, #ffffff);
+  color: var(--lasc-ink);
 }
 
-.rumbo-a-brasil {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  box-sizing: border-box;
-  gap: 5%;
-  background-color: white;
+.lasc-history-inner {
+  width: min(100%, 1120px);
+  margin: 0 auto;
 }
 
-.rumbo-content {
-  flex: 1;
-  max-width: 600px;
-}
-
-.rumbo-title {
-  font-size: 4rem;
-  font-weight: 800;
-  margin-bottom: 0.5rem;
-  font-family: "Barlow Condensed", sans-serif;
-  line-height: 1;
-  color: black;
-}
-
-.rumbo-subtitle {
-  font-size: 2.5rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  font-family: "Barlow Condensed", sans-serif;
-  line-height: 1.1;
-  color: black;
-}
-
-.rumbo-text {
-  font-size: 1.1rem;
-  line-height: 1.5;
-  font-family: Arial, sans-serif;
-  text-align: justify;
-  color: black;
-}
-
-.rumbo-image-container {
-  flex: 0 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.rumbo-image {
-  max-width: 300px;
-  height: auto;
-  object-fit: contain;
-}
-
-.kuntur1-image {
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
+.lasc-history-header {
   margin-bottom: 2.5rem;
 }
 
-.misiones-container{
+.lasc-history-header h2 {
+  margin: 0 0 0.5rem;
+  color: var(--lasc-ink);
+  font-family: var(--font-barlow, "Barlow Condensed", sans-serif);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.lasc-history-header>p {
+  margin: 0;
+  color: var(--lasc-muted);
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+}
+
+.lasc-timeline {
+  position: relative;
+  display: grid;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lasc-timeline::before {
+  position: absolute;
+  top: 2rem;
+  bottom: 2rem;
+  left: 2rem;
+  width: 2px;
+  background: var(--lasc-border);
+  content: "";
+}
+
+.lasc-timeline-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 4rem minmax(0, 1fr);
+  align-items: start;
+  gap: 1.5rem;
+}
+
+.lasc-timeline-year {
+  z-index: 1;
+  display: grid;
+  width: 4rem;
+  height: 4rem;
+  place-items: center;
+  border: 2px solid var(--lasc-border);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--lasc-primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.lasc-event-card {
+  position: relative;
+  min-width: 0;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid var(--lasc-border);
+  border-radius: 0.75rem;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(8, 16, 33, 0.045);
+}
+
+.lasc-event-header {
+  --lasc-badge-size: clamp(10rem, 18vw, 15rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--lasc-badge-size);
+  align-items: flex-start;
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+.lasc-event-header>div {
+  min-width: 0;
+}
+
+.lasc-event-kicker {
+  margin: 0 0 0.45rem;
+  color: var(--lasc-primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.lasc-event-header h3 {
+  margin: 0;
+  color: var(--lasc-ink);
+  font-family: var(--font-barlow, "Barlow Condensed", sans-serif);
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.lasc-edition-badge {
+  width: auto;
+  height: var(--lasc-badge-size);
+  justify-self: center;
+  object-fit: contain;
+}
+
+.lasc-event-groups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+  text-align: left;
+}
+
+.lasc-event-groups--single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.lasc-event-group {
+  min-width: 0;
+}
+
+.lasc-event-group h4 {
+  margin: 0 0 0.7rem;
+  color: var(--lasc-primary);
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.lasc-result-list {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lasc-result-list--two-columns {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.lasc-result-card {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  gap: 5rem;
+  gap: 0.7rem;
+  min-width: 0;
+  min-height: 6rem;
+  padding: 0.75rem;
+  border: 1px solid var(--lasc-border);
+  border-radius: 0.6rem;
+  background: #fff;
+}
+
+.lasc-mission-patch {
+  flex: none;
+  width: 5rem;
+  height: 5rem;
+  object-fit: contain;
+}
+
+.lasc-conduct-award {
+  flex: none;
+  width: 5rem;
+  height: 5rem;
+  object-fit: contain;
+}
+
+.lasc-result-card>svg {
+  flex: none;
+  width: 5rem;
+  height: 5rem;
+  padding: 0.65rem;
+  border-radius: 50%;
+  background: #cedcf7;
+  color: var(--lasc-primary);
+  stroke-width: 1.8;
+}
+
+.lasc-result-copy {
+  display: grid;
+  min-width: 0;
+  gap: 0.12rem;
+  color: var(--lasc-muted);
+  font-size: 0.85rem;
+  line-height: 1.3;
+}
+
+.lasc-result-name {
+  color: var(--lasc-ink);
+  font-weight: 700;
+}
+
+.lasc-result-copy strong {
+  color: var(--lasc-primary);
+  font-size: 1rem;
+  font-weight: 700;
 }
 
 @media (max-width: 900px) {
-  .rumbo-a-brasil {
-    flex-direction: column;
+  .lasc-event-groups {
+    gap: 1.25rem;
+  }
+
+  .lasc-event-header {
+    --lasc-badge-size: clamp(10rem, 24vw, 13rem);
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    gap: 0.75rem;
     text-align: center;
-    padding: 3vh 5%;
   }
 
-  .rumbo-content {
-    max-width: 100%;
+  .lasc-event-header>div {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+
+  .lasc-event-groups,
+  .lasc-result-list--two-columns {
+    grid-template-columns: minmax(0, 1fr);
   }
 
-  .rumbo-title {
-    font-size: 2.5rem;
+  .lasc-history-header {
+    margin-bottom: 1.75rem;
   }
 
-  .rumbo-subtitle {
-    font-size: 1.8rem;
+  .lasc-timeline {
+    gap: 1rem;
   }
 
-  .rumbo-text {
-    font-size: 0.9rem;
+  .lasc-timeline::before {
+    top: 1.45rem;
+    bottom: 1.45rem;
+    left: 1.45rem;
   }
 
-  .rumbo-image {
-    max-width: 200px;
+  .lasc-timeline-item {
+    grid-template-columns: 2.9rem minmax(0, 1fr);
+    gap: 0.75rem;
   }
+
+  .lasc-timeline-year {
+    width: 2.9rem;
+    height: 2.9rem;
+    font-size: 0.68rem;
+  }
+
+  .lasc-event-card {
+    padding: 1rem;
+  }
+
+  .lasc-event-header h3 {
+    font-size: clamp(1.55rem, 5vw, 2rem);
+  }
+
+  .lasc-event-header {
+    --lasc-badge-size: clamp(8rem, 32vw, 11rem);
+  }
+
 }

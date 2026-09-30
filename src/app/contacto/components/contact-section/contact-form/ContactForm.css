@@ -192,14 +192,14 @@
 
 .form-field-input:focus,
 .form-field-textarea:focus {
-  border-color: #3b82f6;
+  border-color: var(--color-accent);
   background-color: #fff;
-  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+  box-shadow: 0 0 0 4px rgba(28, 41, 107, 0.2);
 }
 
 .form-field-input:hover,
 .form-field-textarea:hover {
-  border-color: #a5b4fc;
+  border-color: var(--color-accent-light);
 }
 
 .form-field-input::placeholder,
@@ -229,7 +229,7 @@
 
 /* Hover: cambia color y eleva el botón */
 .submit-button:hover {
-  background-color: #1e3657; /* Gray-800 */
+  background-color: var(--color-accent); /* Brand accent */
   transform: translateY(-2px);
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
@@ -237,7 +237,7 @@
 /* Focus: ring visible */
 .submit-button:focus {
   outline: none;
-  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.4); /* blue ring */
+  box-shadow: 0 0 0 4px rgba(28, 41, 107, 0.4); /* brand ring */
 }
 
 /* Active: animación de clic */

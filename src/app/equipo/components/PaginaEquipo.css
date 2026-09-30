@@ -53,8 +53,8 @@
 
 .directorio-filtros input:focus,
 .directorio-filtros select:focus {
-  border-color: #00548c;
-  box-shadow: 0 0 0 3px rgba(0, 84, 140, 0.1);
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(28, 41, 107, 0.1);
   outline: none;
 }
 
@@ -87,7 +87,7 @@
 }
 
 .directorio-seccion-header:hover h3 {
-  color: #00548c;
+  color: var(--color-accent);
 }
 
 .directorio-seccion h3 {
@@ -116,9 +116,9 @@
 }
 
 .toggle-button:hover {
-  color: #00548c;
-  border-color: #00548c;
-  background-color: #f0f7ff;
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  background-color: rgba(28, 41, 107, 0.06);
 }
 
 .toggle-button.expanded {

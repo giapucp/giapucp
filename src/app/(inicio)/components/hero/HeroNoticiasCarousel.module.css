@@ -1,0 +1,550 @@
+/* HeroNoticiasCarousel.module.css */
+
+.heroContainer {
+  position: relative;
+  width: 100%;
+  min-height: 88vh;
+  height: auto;
+  min-height: clamp(620px, 88vh, 850px);
+  background: var(--color-deep-space, #030723);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #ffffff;
+  padding-top: 80px;
+  /* Offset for fixed navbar */
+  box-sizing: border-box;
+}
+
+/* Subtle moving starfield background */
+.starfield {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(1.5px 1.5px at 20px 30px, #ffffff, rgba(0, 0, 0, 0)),
+    radial-gradient(1px 1px at 75px 120px, rgba(206, 220, 247, 0.8), rgba(0, 0, 0, 0)),
+    radial-gradient(1.5px 1.5px at 150px 80px, #ffffff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 220px 190px, rgba(206, 220, 247, 0.6), rgba(0, 0, 0, 0)),
+    radial-gradient(1px 1px at 300px 60px, #ffffff, rgba(0, 0, 0, 0)),
+    radial-gradient(1.5px 1.5px at 380px 240px, rgba(206, 220, 247, 0.7), rgba(0, 0, 0, 0));
+  background-size: 450px 350px;
+  opacity: 0.18;
+  animation: starDrift 100s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes starDrift {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: -450px -350px;
+  }
+}
+
+/* Track container holding all slides */
+.slidesTrack {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+/* Individual Slide */
+.slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(1.04);
+  pointer-events: none;
+}
+
+.slideActive {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  pointer-events: auto;
+  z-index: 3;
+}
+
+/* Background image of the slide */
+.slideBackground {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 7s ease-out;
+  transform: scale(1);
+}
+
+.slideActive .slideBackground {
+  transform: scale(1.05);
+}
+
+/* Gradients over slide image for cinema contrast */
+.gradientOverlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg,
+      rgba(3, 7, 35, 0.96) 0%,
+      rgba(3, 7, 35, 0.85) 35%,
+      rgba(3, 7, 35, 0.5) 65%,
+      rgba(3, 7, 35, 0.3) 100%),
+    linear-gradient(0deg,
+      rgba(3, 7, 35, 0.98) 0%,
+      rgba(3, 7, 35, 0.5) 25%,
+      transparent 60%),
+    linear-gradient(180deg,
+      rgba(3, 7, 35, 0.8) 0%,
+      transparent 30%);
+  z-index: 2;
+}
+
+/* Vignette around edges */
+.vignette {
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 100px rgba(3, 7, 35, 0.8);
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Slide Content wrapper */
+.contentContainer {
+  position: relative;
+  z-index: 4;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.contentInner {
+  max-width: 780px;
+  animation: contentFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes contentFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Badge at top of slide */
+.badgeWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+
+.categoryBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.9rem;
+  background: rgba(28, 41, 107, 0.65);
+  border: 1px solid rgba(206, 220, 247, 0.35);
+  border-radius: 9999px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-accent-light, #CEDCF7);
+  box-shadow: 0 0 16px rgba(28, 41, 107, 0.4);
+}
+
+.pulsingDot {
+  width: 7px;
+  height: 7px;
+  background-color: #38bdf8;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #38bdf8;
+  animation: pulseLight 2s infinite ease-in-out;
+}
+
+@keyframes pulseLight {
+
+  0%,
+  100% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: scale(1.3);
+    opacity: 1;
+    box-shadow: 0 0 12px #38bdf8;
+  }
+}
+
+.dateBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 500;
+}
+
+/* Title */
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.2vw, 3.75rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin-bottom: 1.25rem;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Description / Subtitle */
+.description {
+  font-family: var(--font-primary);
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.65;
+  margin-bottom: 2rem;
+  max-width: 680px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Actions */
+.actionsRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.6rem;
+  background: linear-gradient(135deg, #1C296B 0%, #243580 100%);
+  color: #ffffff;
+  border: 1px solid rgba(206, 220, 247, 0.25);
+  border-radius: 0.6rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: var(--font-primary);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 6px 20px rgba(28, 41, 107, 0.45);
+  letter-spacing: 0.01em;
+}
+
+.btnPrimary:hover {
+  background: linear-gradient(135deg, #243580 0%, #1C296B 60%, #2a3e9e 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(28, 41, 107, 0.6), 0 0 16px rgba(206, 220, 247, 0.15);
+  border-color: rgba(206, 220, 247, 0.45);
+  color: #ffffff;
+}
+
+.btnPrimary:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(28, 41, 107, 0.4);
+}
+
+.btnSecondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.6rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  font-family: var(--font-primary);
+  text-decoration: none;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.btnSecondary:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+  color: var(--color-accent-light, #CEDCF7);
+}
+
+/* Side navigation arrows */
+.navArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(3, 7, 35, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.navArrow:hover {
+  background: rgba(28, 41, 107, 0.85);
+  border-color: rgba(206, 220, 247, 0.5);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.3);
+}
+
+.navArrowPrev {
+  left: 1.5rem;
+}
+
+.navArrowNext {
+  right: 1.5rem;
+}
+
+/* Bottom Controls Bar */
+.bottomControls {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Indicators container */
+.indicatorsList {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.indicatorItem {
+  position: relative;
+  height: 6px;
+  width: 28px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.indicatorItem:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.indicatorActive {
+  width: 56px;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
+}
+
+.indicatorProgressBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #CEDCF7, rgba(206, 220, 247, 0.7));
+  border-radius: 3px;
+  animation: progressFill 6s linear forwards;
+  animation-play-state: paused;
+}
+
+@keyframes progressFill {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+.indicatorProgressBarAnimating {
+  animation-play-state: running;
+}
+
+.indicatorProgressBarPaused {
+  animation-play-state: paused;
+}
+
+/* Counter & Pause toggle */
+.statusControls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.counterBadge {
+  font-family: monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(0, 0, 0, 0.35);
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.counterCurrent {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.pauseToggleBtn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pauseToggleBtn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.08);
+}
+
+/* Loading & Empty states */
+.loadingContainer,
+.emptyContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  width: 100%;
+  background: var(--color-deep-space, #030723);
+  color: #ffffff;
+  gap: 1.25rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 3px solid rgba(206, 220, 247, 0.2);
+  border-top-color: #38bdf8;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsiveness */
+@media (max-width: 900px) {
+  .heroContainer {
+    min-height: 80vh;
+  }
+
+  .navArrow {
+    display: none;
+    /* Rely on swipe and indicators on tablets / mobile */
+  }
+
+  .contentContainer {
+    padding-bottom: 4.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .heroContainer {
+    min-height: 75vh;
+    padding-top: 70px;
+  }
+
+  .contentContainer {
+    padding: 1.5rem 1.25rem 4.5rem 1.25rem;
+  }
+
+  .title {
+    font-size: 1.75rem;
+    -webkit-line-clamp: 2;
+    margin-bottom: 0.85rem;
+  }
+
+  .description {
+    font-size: 0.95rem;
+    -webkit-line-clamp: 2;
+    margin-bottom: 1.5rem;
+  }
+
+  .actionsRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btnPrimary,
+  .btnSecondary {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .bottomControls {
+    padding: 0 1.25rem;
+    bottom: 1rem;
+  }
+
+  .indicatorItem {
+    width: 18px;
+  }
+
+  .indicatorActive {
+    width: 38px;
+  }
+}

@@ -1,14 +1,12 @@
 "use client"
 
 import { useEffect, useState, useRef } from "react"
-import Navbar from "@/components/comun/navbar/Navbar"
 import MiembroCard from "./MiembroCard"
 import { fetchMiembros } from "../api/Contentful"
 import type { Miembro } from "../../types/types"
 import "./PaginaEquipo.css"
 
 import gsap from "gsap"
-import Banner from "@/components/comun/banner/Banner"
 
 const PaginaEquipo = () => {
   const [miembros, setMiembros] = useState<Miembro[]>([])
@@ -91,12 +89,9 @@ const PaginaEquipo = () => {
 
   if (loading) {
     return (
-      <>
-        <Navbar />
-        <div className="pagina-directorio-container">
-          <div className="loading-state">Cargando directorio...</div>
-        </div>
-      </>
+      <div className="pagina-directorio-container">
+        <div className="loading-state">Cargando directorio...</div>
+      </div>
     )
   }
 

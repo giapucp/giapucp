@@ -5,7 +5,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(3, 7, 35, 0.6);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   z-index: 1000;
@@ -23,16 +23,16 @@
 
 /* ===== MODAL ===== */
 .modal {
-  background: #161616;
+  background: var(--color-white);
   border-radius: 20px;
   max-width: 900px;
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(28, 41, 107, 0.12);
   box-shadow:
-    0 25px 60px rgba(0, 0, 0, 0.5),
-    0 0 40px rgba(0, 84, 140, 0.1);
+    0 25px 60px rgba(28, 41, 107, 0.18),
+    0 4px 16px rgba(28, 41, 107, 0.08);
   animation: modalSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
 }
@@ -54,11 +54,11 @@
 }
 
 .modal::-webkit-scrollbar-track {
-  background: #1a1a1a;
+  background: #f5f7fb;
 }
 
 .modal::-webkit-scrollbar-thumb {
-  background: #00548c;
+  background: var(--color-accent);
   border-radius: 10px;
 }
 
@@ -72,19 +72,21 @@
   height: 40px;
   border-radius: 50%;
   border: none;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(4px);
-  color: white;
+  color: var(--color-accent);
   font-size: 1.3rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(28, 41, 107, 0.15);
 }
 
 .closeBtn:hover {
-  background: rgba(200, 50, 50, 0.8);
+  background: rgba(200, 50, 50, 0.1);
+  color: #c83232;
   transform: rotate(90deg);
 }
 
@@ -108,8 +110,8 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 60%;
-  background: linear-gradient(to top, #161616 0%, transparent 100%);
+  height: 50%;
+  background: linear-gradient(to top, rgba(255, 255, 255, 1) 0%, transparent 100%);
 }
 
 .headerBadge {
@@ -132,8 +134,8 @@
 }
 
 .headerBadgeInactive {
-  background: rgba(100, 100, 100, 0.8);
-  color: #ccc;
+  background: rgba(89, 89, 89, 0.8);
+  color: var(--color-white);
 }
 
 /* ===== BODY ===== */
@@ -152,11 +154,11 @@
 }
 
 .eventTitle {
-  font-size: 1.8rem;
+  font-size: 2.25rem;
   font-weight: 800;
-  color: #ffffff;
+  color: var(--color-accent);
   margin: 0;
-  line-height: 1.25;
+  line-height: 1.2;
   letter-spacing: -0.02em;
 }
 
@@ -167,30 +169,29 @@
 }
 
 .metaCard {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #f5f7fb;
+  border: 1px solid rgba(28, 41, 107, 0.1);
   border-radius: 12px;
   padding: 1rem;
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .metaCard:hover {
-  border-color: rgba(0, 84, 140, 0.4);
+  border-color: rgba(28, 41, 107, 0.3);
+  box-shadow: 0 4px 12px rgba(28, 41, 107, 0.08);
 }
 
 .metaCardIcon {
-  font-size: 1.5rem;
   width: 42px;
   height: 42px;
-  background: rgba(0, 84, 140, 0.15);
-  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  color: var(--color-accent);
 }
 
 .metaCardInfo {
@@ -201,7 +202,7 @@
 
 .metaCardLabel {
   font-size: 0.7rem;
-  color: #888;
+  color: var(--color-gray);
   text-transform: uppercase;
   letter-spacing: 0.8px;
   font-weight: 600;
@@ -209,20 +210,20 @@
 
 .metaCardValue {
   font-size: 0.9rem;
-  color: #e0e0e0;
+  color: var(--color-gray-dark);
   font-weight: 500;
   word-break: break-word;
 }
 
 /* ===== DESCRIPTION ===== */
 .descriptionSection {
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid rgba(28, 41, 107, 0.1);
   padding-top: 1.5rem;
 }
 
 .descriptionTitle {
   font-size: 0.85rem;
-  color: #888;
+  color: var(--color-gray);
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 600;
@@ -230,21 +231,21 @@
 }
 
 .descriptionContent {
-  color: #ccc;
+  color: var(--color-gray-dark);
   font-size: 0.95rem;
   line-height: 1.7;
 }
 
 /* Override RichTextRenderer styles inside modal */
 .descriptionContent p {
-  color: #ccc !important;
+  color: var(--color-gray-dark) !important;
 }
 
 .descriptionContent h1,
 .descriptionContent h2,
 .descriptionContent h3,
 .descriptionContent h4 {
-  color: #fff !important;
+  color: var(--color-accent) !important;
 }
 
 /* ===== DIVIDER ===== */
@@ -254,7 +255,7 @@
   background: linear-gradient(
     to right,
     transparent,
-    rgba(0, 84, 140, 0.4),
+    rgba(28, 41, 107, 0.25),
     transparent
   );
   margin: 0.5rem 0;
@@ -262,8 +263,8 @@
 
 /* ===== REGISTRATION FORM ===== */
 .formSection {
-  background: rgba(0, 84, 140, 0.06);
-  border: 1px solid rgba(0, 84, 140, 0.15);
+  background: #f5f7fb;
+  border: 1px solid rgba(28, 41, 107, 0.12);
   border-radius: 16px;
   padding: 2rem;
 }
@@ -271,13 +272,13 @@
 .formTitle {
   font-size: 1.2rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--color-accent);
   margin: 0 0 0.25rem 0;
 }
 
 .formSubtitle {
   font-size: 0.85rem;
-  color: #888;
+  color: var(--color-gray);
   margin: 0 0 1.5rem 0;
 }
 
@@ -295,7 +296,7 @@
 
 .inputLabel {
   font-size: 0.8rem;
-  color: #999;
+  color: var(--color-gray);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -304,10 +305,10 @@
 .input {
   width: 100%;
   padding: 0.8rem 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  background: var(--color-white);
+  border: 1.5px solid rgba(28, 41, 107, 0.18);
   border-radius: 10px;
-  color: #ffffff;
+  color: var(--color-gray-dark);
   font-size: 0.95rem;
   font-family: var(--font-primary);
   transition: all 0.3s ease;
@@ -315,18 +316,19 @@
 }
 
 .input option {
-  color: #000000;
-  background-color: #ffffff;
+  color: var(--color-gray-dark);
+  background-color: var(--color-white);
 }
 
 .input::placeholder {
-  color: #555;
+  color: var(--color-gray);
+  opacity: 0.6;
 }
 
 .input:focus {
-  border-color: #00548c;
-  box-shadow: 0 0 0 3px rgba(0, 84, 140, 0.2);
-  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(28, 41, 107, 0.1);
+  background: var(--color-white);
 }
 
 .inputRow {
@@ -338,8 +340,8 @@
 .submitBtn {
   width: 100%;
   padding: 0.9rem 2rem;
-  background: linear-gradient(135deg, #00548c, #0077cc);
-  color: white;
+  background: var(--color-accent);
+  color: var(--color-white);
   border: none;
   border-radius: 12px;
   font-size: 1rem;
@@ -362,7 +364,7 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.15),
     transparent
   );
   transition: left 0.5s ease;
@@ -373,14 +375,14 @@
 }
 
 .submitBtn:hover {
-  background: linear-gradient(135deg, #0077cc, #0099ff);
+  background: #253490;
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(0, 84, 140, 0.4);
+  box-shadow: 0 10px 25px rgba(28, 41, 107, 0.3);
 }
 
 .submitBtn:disabled {
-  background: #333;
-  color: #666;
+  background: var(--color-gray);
+  opacity: 0.5;
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
@@ -445,23 +447,23 @@
 .successTitle {
   font-size: 1.3rem;
   font-weight: 700;
-  color: #00c853;
+  color: #00a846;
   margin: 0 0 0.5rem 0;
 }
 
 .successText {
   font-size: 0.9rem;
-  color: #999;
+  color: var(--color-gray);
   margin: 0;
 }
 
 /* ===== ERROR MESSAGE ===== */
 .errorMessage {
-  background: rgba(200, 50, 50, 0.1);
-  border: 1px solid rgba(200, 50, 50, 0.3);
+  background: rgba(200, 50, 50, 0.06);
+  border: 1px solid rgba(200, 50, 50, 0.25);
   border-radius: 10px;
   padding: 0.75rem 1rem;
-  color: #ff6b6b;
+  color: #c83232;
   font-size: 0.85rem;
   text-align: center;
 }
@@ -470,29 +472,30 @@
 .endedMessage {
   text-align: center;
   padding: 2rem;
-  background: rgba(255, 255, 255, 0.03);
+  background: #f5f7fb;
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(28, 41, 107, 0.1);
 }
 
 .endedIcon {
   font-size: 2.5rem;
   margin-bottom: 0.75rem;
   display: block;
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
 .endedTitle {
   font-size: 1.1rem;
-  color: #888;
+  color: var(--color-gray);
   font-weight: 600;
   margin: 0 0 0.25rem 0;
 }
 
 .endedText {
   font-size: 0.85rem;
-  color: #666;
+  color: var(--color-gray);
   margin: 0;
+  opacity: 0.8;
 }
 
 /* ===== RESPONSIVE ===== */

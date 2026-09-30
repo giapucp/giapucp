@@ -8,7 +8,10 @@
 }
 
 .navbar-simple {
-  background: #000 !important;
+  background: rgba(3, 7, 35, 0.88) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* Logo GIA */
@@ -64,7 +67,7 @@
   bottom: -4px;
   height: 2px;
   width: 0;
-  background: linear-gradient(90deg, #00f2fe, #4facfe);
+  background: linear-gradient(90deg, var(--color-accent-light), var(--color-accent));
   transition:
     width 0.3s ease,
     opacity 0.3s ease;
@@ -83,7 +86,7 @@
 /* Efecto hover para el texto del enlace */
 .nav-link:hover .nav-text {
   transform: translateY(-2px);
-  color: #4facfe;
+  color: var(--color-accent-light);
 }
 
 /* Pseudo-elemento ::before para el efecto de fondo sutil al hacer hover */
@@ -136,8 +139,8 @@
   height: 100vh;
   background: linear-gradient(
     135deg,
-    rgba(0, 0, 0, 0.95),
-    rgba(0, 84, 140, 0.9)
+    rgba(3, 7, 35, 0.95),
+    rgba(28, 41, 107, 0.9)
   );
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -215,7 +218,7 @@
 
 .mobile-nav-link:hover .mobile-nav-text {
   transform: translateX(10px);
-  color: #4facfe;
+  color: var(--color-accent-light);
 }
 
 .mobile-nav-link::before {
@@ -228,7 +231,7 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(79, 172, 254, 0.1),
+    rgba(206, 220, 247, 0.1),
     transparent
   );
   transition: left 0.5s ease;

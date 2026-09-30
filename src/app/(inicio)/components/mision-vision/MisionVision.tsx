@@ -8,6 +8,7 @@ import "./MisionVision.css";
 gsap.registerPlugin(ScrollTrigger);
 
 const MissionVisionSection: React.FC = () => {
+  const sectionRef = useRef<HTMLElement>(null);
   const missionTitleRef = useRef<HTMLHeadingElement>(null);
   const missionTextRef = useRef<HTMLParagraphElement>(null);
   const visionTitleRef = useRef<HTMLHeadingElement>(null);
@@ -15,54 +16,60 @@ const MissionVisionSection: React.FC = () => {
   const dividerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const animateFromLeft = (target: Element | null) => {
-      if (!target) return;
-      gsap.fromTo(
-        target,
-        { x: -100, opacity: 0 },
-        {
-          x: 0,
-          opacity: 1,
-          duration: 1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: target,
-            start: "top 85%",
-            toggleActions: "play reverse play reverse",
-          },
-        },
-      );
-    };
+    if (!sectionRef.current) return;
 
-    const animateDivider = (target: Element | null) => {
-      if (!target) return;
-      gsap.fromTo(
-        target,
-        { scaleX: 0, opacity: 0 },
-        {
-          scaleX: 1,
-          opacity: 1,
-          duration: 1,
-          ease: "power3.out",
-          transformOrigin: "left center",
-          scrollTrigger: {
-            trigger: target,
-            start: "top 85%",
-            toggleActions: "play reverse play reverse",
+    const ctx = gsap.context(() => {
+      const animateFromLeft = (target: Element | null) => {
+        if (!target) return;
+        gsap.fromTo(
+          target,
+          { x: -100, opacity: 0 },
+          {
+            x: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: target,
+              start: "top 85%",
+              toggleActions: "play none none reverse",
+            },
           },
-        },
-      );
-    };
+        );
+      };
 
-    animateFromLeft(missionTitleRef.current);
-    animateFromLeft(missionTextRef.current);
-    animateDivider(dividerRef.current);
-    animateFromLeft(visionTextRef.current);
-    animateFromLeft(visionTitleRef.current);
+      const animateDivider = (target: Element | null) => {
+        if (!target) return;
+        gsap.fromTo(
+          target,
+          { scaleX: 0, opacity: 0 },
+          {
+            scaleX: 1,
+            opacity: 1,
+            duration: 1,
+            ease: "power3.out",
+            transformOrigin: "left center",
+            scrollTrigger: {
+              trigger: target,
+              start: "top 85%",
+              toggleActions: "play none none reverse",
+            },
+          },
+        );
+      };
+
+      animateFromLeft(missionTitleRef.current);
+      animateFromLeft(missionTextRef.current);
+      animateDivider(dividerRef.current);
+      animateFromLeft(visionTextRef.current);
+      animateFromLeft(visionTitleRef.current);
+    }, sectionRef);
+
+    return () => ctx.revert();
   }, []);
 
   return (
-    <section className="page3-section">
+    <section ref={sectionRef} className="page3-section">
       <div className="content-wrapper">
         <div className="mision-section">
           <h2 ref={missionTitleRef} className="title-left">
@@ -73,19 +80,19 @@ const MissionVisionSection: React.FC = () => {
             el desarrollo experimental en cohetería y ciencias espaciales, 
             ejecutando proyectos reales que integren formación técnica 
             aplicada, producción de conocimiento académico y validación 
-            tecnológica, contribuyendo al desarrollo del ecosistema a
-            eroespacial peruano desde la universidad.
+            tecnológica, contribuyendo al desarrollo del ecosistema 
+            aeroespacial peruano desde la universidad.
           </p>
         </div>
         <div ref={dividerRef} className="divider-line" />
         <div className="vision-section">
           <p ref={visionTextRef} className="text-block">
             Ser el grupo universitario de referencia en cohetería experimental
-             y ciencias espaciales en el Perú, reconocido por su producción 
-             científica, la validación en vuelo de sus desarrollos, 
-             su aporte a la formación de talento de alto nivel y su capacidad 
-             de sostener operaciones mediante una estructura organizacional 
-             autónoma, profesional y financieramente viable.
+            y ciencias espaciales en el Perú, reconocido por su producción 
+            científica, la validación en vuelo de sus desarrollos, 
+            su aporte a la formación de talento de alto nivel y su capacidad 
+            de sostener operaciones mediante una estructura organizacional 
+            autónoma, profesional y financieramente viable.
           </p>
           <h2 ref={visionTitleRef} className="title-right">
             VISIÓN

@@ -22,7 +22,7 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <header className="navbar-simple fixed top-0 w-full bg-black text-white flex justify-between items-center z-50 shadow-lg px-[50px] py-[10px]">
+      <header className="navbar-simple fixed top-0 w-full bg-[var(--color-deep-space)] text-white flex justify-between items-center z-50 shadow-lg px-[50px] py-[10px]">
         {/* Logo GIA a la izquierda */}
         <div className="flex-none">
           <Link href="/" className="text-white no-underline">
@@ -31,7 +31,6 @@ const Navbar: React.FC = () => {
               alt="GIA"
               width={60}
               height={60}
-              unoptimized={true}
             />
           </Link>
         </div>
@@ -56,12 +55,6 @@ const Navbar: React.FC = () => {
         {/* Navegación desktop */}
         <nav className="nav-links hidden md:block">
           <ul className="flex gap-8 text-lg m-0 p-0 list-none">
-            <li className="nav-item">
-              <Link href="/" className="nav-link">
-                <span className="nav-text">Inicio</span>
-                <span className="nav-indicator"></span>
-              </Link>
-            </li>
             <li className="nav-item">
               <Link href="/noticias" className="nav-link">
                 <span className="nav-text">Noticias</span>

@@ -15,7 +15,7 @@
 .miembro-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
-  border-color: rgba(0, 84, 140, 0.4); /* hover:border-[#00548c] slightly visible */
+  border-color: rgba(28, 41, 107, 0.4); /* hover:border-[accent] slightly visible */
 }
 
 .miembro-imagen-container {
@@ -49,7 +49,7 @@
 
 .miembro-cargo {
   font-size: 0.85rem;
-  color: #00548c; /* Color de acento para los cargos */
+  color: var(--color-accent); /* Color de acento para los cargos */
   font-weight: 600;
   margin-top: 0;
   padding: 0 0.5rem;

@@ -1,5 +1,5 @@
 .page3-section {
-  background: linear-gradient(160deg, #000000 30%, #00548c, #7fc0ba, #ffffff);
+  background: linear-gradient(160deg, var(--color-deep-space) 30%, var(--color-accent), var(--color-accent-light), #ffffff);
   min-height: 40vh;
   width: 100%;
   display: flex;

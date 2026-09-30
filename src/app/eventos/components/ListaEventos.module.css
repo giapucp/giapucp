@@ -1,8 +1,8 @@
 /* ===== CONTENEDOR PRINCIPAL ===== */
 .container {
   width: 100%;
-  min-height: 100vh;
-  background: #0d0d0d;
+  min-height: 50vh;
+  background: #f5f7fb;
   padding: 4rem 1rem;
   box-sizing: border-box;
 }
@@ -30,10 +30,10 @@
 
 .filterBtn {
   padding: 0.5rem 1.25rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--color-white);
+  border: 1px solid rgba(28, 41, 107, 0.18);
   border-radius: 25px;
-  color: #999;
+  color: var(--color-gray);
   font-size: 0.8rem;
   font-weight: 600;
   cursor: pointer;
@@ -42,14 +42,15 @@
 }
 
 .filterBtn:hover {
-  border-color: rgba(0, 84, 140, 0.4);
-  color: #ccc;
+  border-color: rgba(28, 41, 107, 0.4);
+  color: var(--color-accent);
+  background: rgba(28, 41, 107, 0.05);
 }
 
 .filterBtnActive {
-  background: #00548c;
-  border-color: #00548c;
-  color: white;
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-white);
 }
 
 /* ===== GRID DE EVENTOS ===== */
@@ -67,22 +68,24 @@
 }
 
 .emptyIcon {
-  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 1rem;
-  display: block;
+  color: var(--color-accent);
   opacity: 0.4;
 }
 
 .emptyTitle {
   font-size: 1.2rem;
-  color: #666;
+  color: var(--color-gray);
   font-weight: 600;
   margin: 0 0 0.5rem 0;
 }
 
 .emptyText {
   font-size: 0.9rem;
-  color: #555;
+  color: var(--color-gray);
   margin: 0;
 }
 
@@ -94,14 +97,14 @@
   justify-content: center;
   min-height: 40vh;
   gap: 1.5rem;
-  color: #888;
+  color: var(--color-gray);
 }
 
 .loadingSpinner {
   width: 45px;
   height: 45px;
-  border: 3px solid #222;
-  border-top-color: #00548c;
+  border: 3px solid rgba(28, 41, 107, 0.12);
+  border-top-color: var(--color-accent);
   border-radius: 50%;
   animation: spinLoader 1s linear infinite;
 }
@@ -120,14 +123,14 @@
   justify-content: center;
   min-height: 40vh;
   gap: 1rem;
-  color: #888;
+  color: var(--color-gray);
   text-align: center;
 }
 
 .retryButton {
   padding: 0.7rem 2rem;
-  background: #00548c;
-  color: white;
+  background: var(--color-accent);
+  color: var(--color-white);
   border: none;
   border-radius: 25px;
   font-size: 0.9rem;
@@ -137,7 +140,7 @@
 }
 
 .retryButton:hover {
-  background: #0077cc;
+  background: #253490;
   transform: translateY(-2px);
 }
 

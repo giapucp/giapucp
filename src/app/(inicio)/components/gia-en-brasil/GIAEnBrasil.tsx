@@ -3,113 +3,216 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Image from 'next/image';
+import Image from "next/image";
+import { Medal } from "lucide-react";
 import "./GIAEnBrasil.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const RumboBrasil: React.FC = () => {
-  const rumboBrasilRef = useRef<HTMLDivElement>(null);
-  const scrollIndicatorRef = useRef<HTMLDivElement>(null);
-  const rumboTitleRef = useRef<HTMLHeadingElement>(null);
-  const rumboSubtitleRef = useRef<HTMLHeadingElement>(null);
-  const rumboTextRef = useRef<HTMLParagraphElement>(null);
-  const rumboImageRef = useRef<HTMLImageElement>(null);
-  const kuntur1ImageRef = useRef<HTMLImageElement>(null);
-  const logoImageRef = useRef<HTMLImageElement>(null);
-  
+  const sectionRef = useRef<HTMLElement>(null);
+  const timelineRef = useRef<HTMLOListElement>(null);
+
   useEffect(() => {
-    const createScrollTriggerAnimation = (
-      targetRef: React.RefObject<Element>,
-      initialProps: gsap.TweenVars,
-      finalProps: gsap.TweenVars,
-      delay = 0,
-      triggerStart = "top 80%",
-    ) => {
-      const el = targetRef.current;
-      if (!el) return;
+    if (!sectionRef.current || !timelineRef.current) return;
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    if (prefersReducedMotion) return;
+
+    const ctx = gsap.context(() => {
       gsap.fromTo(
-        el,
-        { opacity: 0, ...initialProps },
+        ".lasc-timeline-item",
+        { opacity: 0, y: 32 },
         {
           opacity: 1,
-          ...finalProps,
-          duration: 1,
-          delay: delay,
+          y: 0,
+          duration: 0.7,
+          stagger: 0.18,
           ease: "power2.out",
           scrollTrigger: {
-            trigger: rumboBrasilRef.current,
-            start: triggerStart,
-            toggleActions: "play reverse play reverse",
+            trigger: sectionRef.current,
+            start: "top 75%",
+            toggleActions: "play none none reverse",
           },
         },
       );
-    };
+    }, sectionRef);
 
-    createScrollTriggerAnimation(rumboBrasilRef as React.RefObject<Element>, { y: 100 }, { y: 0 }, 0, "top 80%");
-    createScrollTriggerAnimation(rumboTitleRef as React.RefObject<Element>, { x: -100 }, { x: 0 }, 0.2, "top 75%");
-    createScrollTriggerAnimation(rumboSubtitleRef as React.RefObject<Element>, { x: 100 }, { x: 0 }, 0.4, "top 70%");
-    createScrollTriggerAnimation(rumboTextRef as React.RefObject<Element>, { y: 50 }, { y: 0 }, 0.6, "top 65%");
-    createScrollTriggerAnimation(rumboImageRef as React.RefObject<Element>, { scale: 0.5 }, { scale: 1, ease: "back.out(1.7)" }, 0.8, "top 60%");
-
-    if (scrollIndicatorRef.current) {
-      gsap.fromTo(
-        scrollIndicatorRef.current,
-        { opacity: 0 },
-        {
-          opacity: 1,
-          duration: 1.5,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: scrollIndicatorRef.current,
-            start: "top 90%",
-            toggleActions: "play reverse play reverse",
-          },
-        },
-      );
-    }
+    return () => ctx.revert();
   }, []);
 
   return (
-    <div className="page4 flex flex-col items-center">
-      <section
-        ref={rumboBrasilRef}
-        className="rumbo-a-brasil w-full min-h-[35vh] flex justify-center items-center bg-white text-black"
-      >
-        <div className="rumbo-content">
-          <h1 ref={rumboTitleRef} className="rumbo-title">
-            GIA EN BRASIL
-          </h1>
-          <h2 ref={rumboSubtitleRef} className="rumbo-subtitle">
-            Latin America Space Challenge <br /> 6ta edición
-          </h2>
-          <p ref={rumboTextRef} className="rumbo-text">
-            Nuestra participación en el evento fue notoria. Obtuvimos un gran sexto puesto en la sección de satélites con nuestro MiSat y nuestro Kuntur 1 logró un notable séptimo puesto en la sección de cohetería de 500 metros.
+    <section
+      ref={sectionRef}
+      className="lasc-history"
+      aria-labelledby="lasc-history-title"
+    >
+      <div className="lasc-history-inner">
+        <div className="lasc-history-header">
+          <h2 id="lasc-history-title">GIA EN BRASIL</h2>
+          <p>
+            Participaciones y resultados del Latin America Space Challenge.
           </p>
         </div>
-        <div className="rumbo-image-container">
-          <Image
-            ref={rumboImageRef}
-            src="/brasil-edition.png"
-            alt="LASC Sixth Edition Rocket-Satellite"
-            className="rumbo-image"
-            loading="lazy"
-            width={200}
-            height={200}
-          />
-        </div>
-      </section>
-      <Image
-            ref={kuntur1ImageRef}
-            src="/Kuntur1.png"
-            alt="Kuntur 1 in Brasil"
-            className="kuntur1-image"
-            loading="lazy"
-            width={2000}
-            height={2000}
-          />
-     
-    </div>
+
+        <ol
+          ref={timelineRef}
+          className="lasc-timeline"
+          aria-label="Participaciones de GIA en el LASC por año"
+        >
+          <li className="lasc-timeline-item">
+            <div className="lasc-timeline-year" aria-hidden="true">
+              2026
+            </div>
+            <article className="lasc-event-card">
+              <div className="lasc-event-header">
+                <div>
+                  <p className="lasc-event-kicker">
+                    7.ª edición · 2 al 5 de septiembre
+                  </p>
+                  <h3>Latin America Space Challenge 2026</h3>
+                  <div className="lasc-event-groups">
+                    <section className="lasc-event-group" aria-labelledby="lasc-participation-2026">
+                      <h4 id="lasc-participation-2026">Participación</h4>
+                      <ul className="lasc-result-list">
+                        <li className="lasc-result-card lasc-result-card--participation">
+                          <Image
+                            src="/kuntur-mission-patch.png"
+                            alt="Parche oficial de la misión Kuntur-1"
+                            className="lasc-mission-patch"
+                            width={160}
+                            height={160}
+                            sizes="80px"
+                          />
+                          <span className="lasc-result-copy">
+                            <span className="lasc-result-name">Kuntur-1</span>
+                            <span>Cohetería de 500 m</span>
+                            <strong>7.º de 21</strong>
+                          </span>
+                        </li>
+                        <li className="lasc-result-card lasc-result-card--participation">
+                          <Image
+                            src="/misat-mission-patch.png"
+                            alt="Parche oficial de la misión MiSat PocketQube"
+                            className="lasc-mission-patch"
+                            width={160}
+                            height={160}
+                            sizes="80px"
+                          />
+                          <span className="lasc-result-copy">
+                            <span className="lasc-result-name">MiSat</span>
+                            <span>PocketQube</span>
+                            <strong>10.º de 24</strong>
+                          </span>
+                        </li>
+                      </ul>
+                    </section>
+                    <section className="lasc-event-group" aria-labelledby="lasc-achievements-2026">
+                      <h4 id="lasc-achievements-2026">Logros</h4>
+                      <ul className="lasc-result-list">
+                        <li className="lasc-result-card">
+                          <Image
+                            src="/conduct-award-2026.png"
+                            alt="Premio Team Conduct Award 2026"
+                            className="lasc-conduct-award"
+                            width={160}
+                            height={160}
+                            sizes="80px"
+                          />
+                          <span className="lasc-result-copy">
+                            <strong>Team Conduct Award</strong>
+                          </span>
+                        </li>
+                        <li className="lasc-result-card">
+                          <Medal aria-hidden="true" />
+                          <span className="lasc-result-copy">
+                            <strong>2 Podium Sessions</strong>
+                          </span>
+                        </li>
+                      </ul>
+                    </section>
+                  </div>
+                </div>
+                <Image
+                  src="/lasc-2026-patch.jpg"
+                  alt="Insignia oficial del Latin America Space Challenge 2026, séptima edición"
+                  className="lasc-edition-badge"
+                  width={480}
+                  height={480}
+                  sizes="(max-width: 640px) 176px, (max-width: 900px) 208px, 240px"
+                />
+              </div>
+            </article>
+          </li>
+
+          <li className="lasc-timeline-item">
+            <div className="lasc-timeline-year" aria-hidden="true">
+              2025
+            </div>
+            <article className="lasc-event-card">
+              <div className="lasc-event-header">
+                <div>
+                  <p className="lasc-event-kicker">
+                    6.ª edición · 5 al 8 de noviembre
+                  </p>
+                  <h3>Latin America Space Challenge 2025</h3>
+                  <div className="lasc-event-groups lasc-event-groups--single">
+                    <section className="lasc-event-group" aria-labelledby="lasc-participation-2025">
+                      <h4 id="lasc-participation-2025">Participación</h4>
+                      <ul className="lasc-result-list lasc-result-list--two-columns">
+                        <li className="lasc-result-card lasc-result-card--participation">
+                          <Image
+                            src="/kuntur-mission-patch.png"
+                            alt="Parche oficial de la misión Kuntur 1"
+                            className="lasc-mission-patch"
+                            width={160}
+                            height={160}
+                            sizes="80px"
+                          />
+                          <span className="lasc-result-copy">
+                            <span className="lasc-result-name">Kuntur-1</span>
+                            <span>Cohetería de 500 m</span>
+                            <strong>7.º de 26</strong>
+                          </span>
+                        </li>
+                        <li className="lasc-result-card lasc-result-card--participation">
+                          <Image
+                            src="/misat-mission-patch.png"
+                            alt="Parche oficial de la misión MiSat CanSats"
+                            className="lasc-mission-patch"
+                            width={160}
+                            height={160}
+                            sizes="80px"
+                          />
+                          <span className="lasc-result-copy">
+                            <span className="lasc-result-name">MiSat</span>
+                            <span>PocketQube</span>
+                            <strong>9.º de 30</strong>
+                          </span>
+                        </li>
+                      </ul>
+                    </section>
+                  </div>
+                </div>
+                <Image
+                  src="/brasil-edition.png"
+                  alt="Insignia oficial de GIA para la sexta edición del Latin America Space Challenge"
+                  className="lasc-edition-badge"
+                  width={348}
+                  height={402}
+                  sizes="(max-width: 640px) 176px, (max-width: 900px) 208px, 240px"
+                />
+              </div>
+            </article>
+          </li>
+
+        </ol>
+      </div>
+
+    </section>
   );
 };
 

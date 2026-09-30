@@ -3,10 +3,19 @@
 /* Definición de fuentes personalizadas */
 @layer base {
   :root {
-    --font-primary:
-      "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    --font-display: "Playfair Display", Georgia, serif;
-    --font-barlow: "Barlow Condensed", sans-serif;
+    /* ===== Paleta de colores GIA ===== */
+    --color-deep-space: #030723;     /* Azul profundo — fondo principal oscuro */
+    --color-dark-space: #081021;     /* Azul oscuro — fondo secundario oscuro */
+    --color-accent: #1C296B;         /* Azul medio — acento principal */
+    --color-accent-light: #CEDCF7;   /* Celeste claro — hover, indicadores */
+    --color-gray: #595959;           /* Gris medio — texto secundario */
+    --color-gray-dark: #344054;      /* Gris oscuro — texto de cuerpo */
+    --color-white: #FFFFFF;          /* Blanco */
+
+    /* ===== Tipografía ===== */
+    --font-primary: var(--font-quicksand, "Quicksand"), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-display: "Microgramma D Bold", var(--font-playfair, "Playfair Display"), Georgia, serif;
+    --font-barlow: var(--font-barlow-condensed, "Barlow Condensed"), sans-serif;
   }
 
   * {
@@ -29,7 +38,7 @@
     font-family: var(--font-primary);
     font-weight: 400;
     /* line-height: 1.6; */
-    color: #1a1a1a;
+    color: var(--color-gray-dark);
   }
 
   /* Clases de utilidad para fuentes */

@@ -5,7 +5,7 @@ import { ContactInfo } from "./contact-info/ContactInfo";
 
 const ContactSection = () => {
   return (
-    <main className="w-full bg-gray-50 text-gray-900 min-h-screen py-8 px-4 flex flex-col items-center">
+    <div className="w-full bg-gray-50 text-gray-900 min-h-screen py-8 px-4 flex flex-col items-center">
       <div className="w-full max-w-6xl mx-auto flex flex-col lg:flex-row gap-8 items-stretch">
         
         {/* Lado izquierdo: Formulario */}
@@ -25,7 +25,7 @@ const ContactSection = () => {
         </section>
 
       </div>
-    </main>
+    </div>
   );
 };
 

@@ -133,7 +133,7 @@ export default function SeccionActualidad() {
 
         {/* Columna secundaria - Noticias antiguas */}
         <div className={styles.secondaryColumn}>
-          {otherNews.map((noticia, idx) => {
+          {otherNews.map((noticia) => {
             const originalIndex = noticias.findIndex(n => n.id === noticia.id);
             return (
               <div
